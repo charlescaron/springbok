@@ -1,0 +1,14 @@
+<div ng-repeat="environment in environments">
+    <a href="#/environments" ng-click="showEnvironmentDetails(environment)">{{environment.name}}</a>
+</div>
+
+<div ng-show="selectedEnvironment">
+    {{selectedEnvironment.name}}
+    {{selectedEnvironment.description}}
+</div>
+
+<div>
+    <label>Name</label><input ng-model="newEnvironment.name"/>
+    <label>Description</label><textarea ng-model="newEnvironment.description"></textarea>
+    <button ng-click="addEnvironment(newEnvironment)" type="button">+</button>
+</div>

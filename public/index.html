@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="springbok">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Springbok, the lightweight issue manager</title>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-resource.min.js"></script>
+
+    <script src="js/springbok.js"></script>
+
+    <!-- Tickets -->
+    <script src="js/tickets/ticket-controller.js"></script>
+    <script src="js/tickets/ticket-service.js"></script>
+
+    <!-- Environments -->
+    <script src="js/environments/environment-controller.js"></script>
+    <script src="js/environments/environment-service.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="#">Springbok</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/tickets/new">New Ticket</a></li>
+            <li><a href="#/environments">Environments</a></li>
+        </ul>
+    </nav>
+
+    <div ng-view></div>
+
+</body>
+</html>
