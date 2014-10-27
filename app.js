@@ -1,6 +1,7 @@
 "use strict";
 
 var express = require('express');
+var expressValidator = require('express-validator');
 var path = require('path');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
@@ -16,6 +17,7 @@ mongoose.connect(process.env.SPRINGBOK_MONGODB_URL || 'mongodb://localhost/sprin
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.json());
+app.use(expressValidator()); //Must be immediately after the registration of bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 

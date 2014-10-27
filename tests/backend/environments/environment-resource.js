@@ -13,5 +13,3 @@ describe('the structure of the Environment model', function(){
     });
 
 });
-
-

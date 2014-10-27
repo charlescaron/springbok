@@ -35,7 +35,7 @@ gulp.task('test-back', function (done) {
         .pipe(istanbul())
         .on('finish', function () {
             gulp.src(BACKEND_TEST_SCRIPTS)
-                .pipe(mocha({reporter: 'nyan'}))
+                .pipe(mocha())
                 .pipe(istanbul.writeReports({
                     dir: 'generated/backend-coverage',
                     reporters: ['html']
