@@ -30,7 +30,7 @@ module.exports = {
     update: function(req, res) {
         currentResponse = res;
         var rawEnvironment = req.body;
-        var converted = new Environment({_id:req.params.id, name: rawEnvironment.name, description: rawEnvironment.description});
+        var converted = new Environment({_id: rawEnvironment._id, name: rawEnvironment.name, description: rawEnvironment.description});
         converted.save(processResponse);
     }
 };
