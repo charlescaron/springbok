@@ -6,13 +6,13 @@ var ticketValidator = require('./ticket-validator');
 var globalValidator = require('../springbok-validator');
 var processor = require('./ticket-repo');
 
-router.get('/tickets/active', processor.getAllActive);
+router.get('/active', processor.getAllActive);
 
-router.get('/tickets/:id', globalValidator.checkUrlId,
+router.get('/:id', globalValidator.checkUrlId,
     globalValidator.checkValidationErrors,
     processor.getById);
 
-router.post('/tickets/', ticketValidator.checkCreationAttributes,
+router.post('/', ticketValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.create);
 

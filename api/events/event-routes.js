@@ -6,12 +6,12 @@ var eventValidator = require('./event-validator');
 var globalValidator = require('../springbok-validator');
 var processor = require('./event-repo');
 
-router.post('/events/', eventValidator.checkCreationAttributes,
-                        globalValidator.checkValidationErrors,
-                        processor.create);
+router.post('/', eventValidator.checkCreationAttributes,
+    globalValidator.checkValidationErrors,
+    processor.create);
 
-router.get('/events/ticket/:id', globalValidator.checkUrlId,
-                                    globalValidator.checkValidationErrors,
-                                    processor.getByTicketId);
+router.get('/ticket/:id', globalValidator.checkUrlId,
+    globalValidator.checkValidationErrors,
+    processor.getByTicketId);
 
 module.exports = router;

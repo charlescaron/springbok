@@ -22,8 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', staticPath);
-app.use('/api', ticketsApi);
-app.use('/api', environmentsApi);
-app.use('/api', eventsApi);
+app.use('/api/tickets', ticketsApi);
+app.use('/api/environments', environmentsApi);
+app.use('/api/events', eventsApi);
 
 module.exports = app;
