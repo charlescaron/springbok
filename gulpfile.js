@@ -4,7 +4,7 @@ var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var karma = require('karma').server;
 
-var BACKEND_SCRIPTS = ['bin/www', 'api/**/*.js', 'app.js', 'index.js'];
+var BACKEND_SCRIPTS = ['bin/www', 'api/**/*.js', 'app.js', 'index.js', 'logger.js'];
 var FRONTEND_SCRIPTS = ['public/js/**/*.js'];
 var ALL_PRODUCTION_SCRIPTS = BACKEND_SCRIPTS.concat(FRONTEND_SCRIPTS);
 
