@@ -1,14 +1,51 @@
-<div ng-repeat="environment in environments">
-    <a href="#/environments" ng-click="showEnvironmentDetails(environment)">{{environment.name}}</a>
+<div class="container-fluid">
+    <div class="col-md-12">
+        <h2>Existing environments</h2>
+    </div>
+    <div ng-repeat="environment in environments">
+        <div class="col-md-2">
+            <a href="#/environments" ng-click="showEnvironmentDetails(environment)" class="thumbnail">
+                <p><strong>{{environment.name}}</strong></p>
+                <p>{{environment.description}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="environments.length == 0"><span class="text-primary">Start by adding an environment!</span></div>
+
+    <div class="col-md-12" ng-show="selectedEnvironment">
+        <h2>Edit the selected environment</h2>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input ng-model="selectedEnvironment.name" class="form-control" placeholder="Enter name" maxlength="50" size="30"/>
+            </div>
+            <div class="form-group">
+                <input ng-model="selectedEnvironment.description" class="form-control" placeholder="Enter description" maxlength="200" size="100"/>
+            </div>
+            <button ng-click="updateEnvironment(selectedEnvironment)" type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+        </form>
+    </div>
+
+    <div class="col-md-12"></div>
+    <div class="col-md-10 col-md-offset-1">
+        <hr/>
+    </div>
+
+    <div class="col-md-12">
+        <h2>Add a new environment</h2>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input ng-model="newEnvironment.name" class="form-control" placeholder="Enter name" maxlength="50" size="30"/>
+            </div>
+            <div class="form-group">
+                <input ng-model="newEnvironment.description" class="form-control" placeholder="Enter description" maxlength="200" size="100"/>
+            </div>
+            <button ng-click="addEnvironment(newEnvironment)" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+        </form>
+    </div>
+
 </div>
 
-<div ng-show="selectedEnvironment">
-    {{selectedEnvironment.name}}
-    {{selectedEnvironment.description}}
-</div>
 
-<div>
-    <label>Name</label><input ng-model="newEnvironment.name"/>
-    <label>Description</label><textarea ng-model="newEnvironment.description"></textarea>
-    <button ng-click="addEnvironment(newEnvironment)" type="button">+</button>
-</div>
+
+
+

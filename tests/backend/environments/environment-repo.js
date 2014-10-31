@@ -29,6 +29,10 @@ describe('the environment API', function(){
         Environment.find = function(query, callback) {
             callback(undefined, {});
         };
+
+        Environment.findByIdAndUpdate = function(id, query, callback) {
+            callback(undefined, {});
+        };
     };
 
     it('should get all the existing environments', function(){

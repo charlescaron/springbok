@@ -1,7 +1,7 @@
 'use strict';
 
 var NAME_MAX_LENGTH = 50;
-var DESC_MAX_LENGTH = 500;
+var DESC_MAX_LENGTH = 200;
 var ID_LENGTH = 24;
 
 var BAD_ID = "The environment ID must be an alphanumeric string of 24 characters. Don't play with this.";

@@ -5,10 +5,17 @@ describe('Environment service', function() {
     var envService;
 
     var fakeResource = {
-        save: sinon.spy(),
-        get: sinon.spy(),
+        save: function() {
+            return {$promise: ''}
+        },
+        update: function() {
+            return {$promise: ''}
+        },
         query: sinon.spy()
     };
+
+    sinon.spy(fakeResource, 'save');
+    sinon.spy(fakeResource, 'update');
 
     var $resource = function() {
         return fakeResource;
@@ -26,6 +33,11 @@ describe('Environment service', function() {
     it('should save an environment', function(){
         envService.save();
         expect(fakeResource.save).to.have.been.called;
+    });
+
+    it('should update an environment', function(){
+        envService.update({_id: 1234});
+        expect(fakeResource.update).to.have.been.called;
     });
 
     it('should get all environments', function(){
