@@ -26,6 +26,7 @@
     "gulp-mocha": "1.1.1",
     "karma": "0.12.24",
     "karma-coverage": "0.2.6",
+    "karma-ng-html2js-preprocessor": "0.1.2",
     "karma-mocha": "0.1.9",
     "karma-phantomjs-launcher": "0.1.4",
     "karma-sinon-chai": "0.2.0",

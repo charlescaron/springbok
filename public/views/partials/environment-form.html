@@ -1,0 +1,10 @@
+<h2>{{title}}</h2>
+<form class="form-inline" role="form">
+    <div class="form-group">
+        <input ng-model="environment.name" class="form-control" placeholder="Enter name" maxlength="50" size="30"/>
+    </div>
+    <div class="form-group">
+        <input ng-model="environment.description" class="form-control" placeholder="Enter description" maxlength="200" size="100"/>
+    </div>
+    <button ng-click="callback()" type="button" class="btn btn-default"><span class="glyphicon {{submitIcon}}"></span></button>
+</form>

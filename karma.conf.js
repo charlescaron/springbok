@@ -10,6 +10,7 @@ module.exports = function(config) {
             'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-mocks.js',
             'public/js/springbok.js',
             'public/js/**/*.js',
+            'public/views/partials/*.html',
             'tests/frontend/**/*.js'
         ],
 
@@ -17,7 +18,8 @@ module.exports = function(config) {
             '**/public/js/tickets/*.js': 'coverage',
             '**/public/js/environments/*.js': 'coverage',
             '**/public/js/events/*.js': 'coverage',
-            '**/public/js/users/*.js': 'coverage'
+            '**/public/js/users/*.js': 'coverage',
+            '**/public/views/partials/*.html': 'ng-html2js'
         },
 
         reporters: ['progress', 'coverage'],
@@ -27,6 +29,12 @@ module.exports = function(config) {
             dir: 'generated/frontend-coverage/'
         },
 
+        ngHtml2JsPreprocessor: {
+            stripPrefix: '.*public',
+            prependPrefix: '../..',
+            moduleName: 'templates'
+        },
+
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
@@ -34,6 +42,6 @@ module.exports = function(config) {
         browsers: ['PhantomJS'],
         captureTimeout: 5000,
         reportSlowerThan: 500,
-        plugins: ['karma-mocha', 'karma-phantomjs-launcher', 'karma-sinon-chai', 'karma-coverage']
+        plugins: ['karma-mocha', 'karma-phantomjs-launcher', 'karma-sinon-chai', 'karma-coverage', 'karma-ng-html2js-preprocessor']
     });
 };
