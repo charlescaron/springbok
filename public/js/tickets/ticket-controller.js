@@ -1,10 +1,12 @@
 "use strict";
 
-springbok.controller('ticketController', function($scope, ticketService) {
+springbok.controller('ticketController', function($scope, ticketService, ticketFilters) {
 
     ticketService.getAllActive(function(data) {
         $scope.tickets = data;
     });
+
+    $scope.filters = ticketFilters.getAll();
 
     $scope.saveTicket = function(toSave) {
         toSave.status = 'active';
