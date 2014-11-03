@@ -9,11 +9,15 @@ module.exports = {
         req.checkParams('id', BAD_ID).len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
         next();
     },
+    checkBodyId: function(req, res, next) {
+        req.checkBody('_id', BAD_ID).len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
+        next();
+    },
     checkValidationErrors: function(req, res, next) {
 
         var errors = req.validationErrors();
         if (errors) {
-            res.status(400).json({error: 'Oops, we have a validation error!'});
+            res.status(400).json({errors: req.validationErrors()});
             return;
         } else {
             next();

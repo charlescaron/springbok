@@ -29,6 +29,10 @@ describe('the ticket API', function(){
         Ticket.find = function(query, callback) {
             callback(undefined, {});
         };
+
+        Ticket.findByIdAndUpdate = function(id, query, callback) {
+            callback(undefined, {});
+        };
     };
 
     it('should get all active tickets', function(){
@@ -48,6 +52,12 @@ describe('the ticket API', function(){
     it('should create a new ticket', function(){
 
         ticketRepo.create({body: {title: 'Test', status: 'active', environment: 1234}}, fakeResponse);
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
+    it('should update an existing ticket', function(){
+
+        ticketRepo.update({body: {title: 'Test', description: 'Test', environment: 1234}}, fakeResponse);
         expect(fakeResponse.json).to.have.been.called;
     });
 

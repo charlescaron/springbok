@@ -16,7 +16,8 @@ router.post('/',   envValidator.checkCreationAttributes,
     processor.create);
 
 router.put('/:id',  globalValidator.checkUrlId,
-    envValidator.checkBodyId,
+    globalValidator.checkBodyId,
+    envValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.update);
 

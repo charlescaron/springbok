@@ -16,4 +16,10 @@ router.post('/', ticketValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.create);
 
+router.put('/:id',  globalValidator.checkUrlId,
+    globalValidator.checkBodyId,
+    ticketValidator.checkCreationAttributes,
+    globalValidator.checkValidationErrors,
+    processor.update);
+
 module.exports = router;
