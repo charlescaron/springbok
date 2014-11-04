@@ -1,0 +1,16 @@
+html, body, main, .content, .row  {height: 100%}
+
+.alt { height: 100% }
+    .alt.row { margin: 0; }
+.column { height: 100%; border-right: solid 1px black; padding-left: 15px; }
+    .column li { width: 75px; height: 75px; border: solid 1px black; margin: 15px 18px; padding: 25px 0px; cursor: pointer; }
+    .column li.selected { border: 2px solid blue; }
+    .column li p { font-size: 1.1em; width: 100%; text-align: center; }
+
+    .column .env0 { background-color: rgba(150, 40, 27, 0.7); color: white; }
+    .column .env1 { background-color: rgba(192, 57, 43, 0.7); color: white; }
+    .column .env2 { background-color: rgba(207, 0, 15, 0.7); color: white; }
+    .column .env3 { background-color: rgba(217, 30, 24, 0.7); color: white; }
+    .column .env4 { background-color: rgba(239, 72, 54, 0.7); color: white; }
+    .column .env5 { background-color: rgba(231, 76, 60, 0.7); color: white; }
+    .column .env6 { background-color: rgba(214, 69, 65, 0.7); color: white; }

@@ -1,0 +1,79 @@
+
+    <div class="row alt">
+        <div class="col-lg-1 column">
+            <label>Environment</label>
+            <ul class="list-unstyled">
+                <li class="env{{$index}}"
+                    ng-repeat="environment in environments track by $index"
+                    ng-class="{selected: ticket.env == environment.name}"
+                    ng-click="selectEnvironment(environment.name)">
+                    <p ">{{environment.name}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-1 column">
+            <label>Problem</label>
+            <ul class="list-unstyled">
+                <li class="problem{{$index}}"
+                    ng-repeat="problem in problems track by $index"
+                    ng-class="{selected: ticket.problem == problem}"
+                    ng-click="selectProblem(problem)">
+                    <p >{{problem}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-1 column">
+            <label>Brand</label>
+            <ul class="list-unstyled">
+                <li class="branc{{$index}}"
+                    ng-repeat="brand in brands track by $index"
+                    ng-class="{selected: ticket.brand == brand}"
+                    ng-click="selectBrand(brand)">
+                    <p >{{brand}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-9 column">
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">What are we talking about ?</label>
+                    <input type="text" class="form-control" name="name" ng-model="ticket.name" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Elaborate a bit please</label>
+                    <textarea class="form-control" cols="50" rows="10" name="description" ng-model="ticket.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>How serious is this ?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="2" checked>
+                            <p class="bg-danger">Stop whatever you are doing and get to it! TOP PRIORITY.</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="1">
+                            <p class="bg-warning">It's okay, keep breathing. Within the week is fine. MEDIUM PRIORITY</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="0">
+                            <p class="bg-info">Seriously ? How can this be a problem ? LOW PRIORITY</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="-1">
+                            <p class="">Not quite sure yet... NO PRIORITY</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary" ng-click="createTicket()">Create ticket</button>
+                </div>
+                {{ticket}}
+            </form>
+        </div>
+    </div>
