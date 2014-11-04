@@ -10,8 +10,12 @@ springbok.config(function($routeProvider) {
             templateUrl : 'views/active_tickets.html',
             controller  : 'allTicketsController'
         })
+        .when('/tickets/new', {
+            templateUrl : 'views/new_ticket.html',
+            controller  : 'newTicketController'
+        })
         .when('/tickets/:id', {
-            templateUrl : 'views/ticket.html',
+            templateUrl : 'views/edit_ticket.html',
             controller  : 'singleTicketController'
         })
         .when('/environments', {

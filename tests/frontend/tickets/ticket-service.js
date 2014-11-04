@@ -6,6 +6,7 @@ describe('Ticket service', function() {
 
     var fakeResource = {
         save: sinon.spy(),
+        update: sinon.spy(),
         get: sinon.spy(),
         query: sinon.spy()
     };
@@ -26,6 +27,11 @@ describe('Ticket service', function() {
     it('should save a ticket', function(){
         ticketService.save();
         expect(fakeResource.save).to.have.been.called;
+    });
+
+    it('should update an existing ticket', function(){
+        ticketService.update({_id: 1234});
+        expect(fakeResource.update).to.have.been.called;
     });
 
     it('should get a ticket by ID', function(){

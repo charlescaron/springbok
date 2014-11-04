@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 springbok.controller('singleTicketController', function($scope, ticketService, $routeParams) {
 
@@ -14,18 +14,8 @@ springbok.controller('singleTicketController', function($scope, ticketService, $
         });
     }
 
-    $scope.saveTicket = function() {
-
-        var toSave = $scope.ticket;
-
-        if (toSave._id) {
-            ticketService.update(toSave);
-        } else {
-            toSave.status = 'active';
-            ticketService.save(toSave);
-        }
+    $scope.save = function() {
+        ticketService.update($scope.ticket);
     };
-
-
 });
 

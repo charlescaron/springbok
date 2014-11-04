@@ -1,13 +1,13 @@
 'use strict';
 
-springbok.directive('environmentForm', function() {
+springbok.directive('ticketForm', function() {
     return {
         restrict: 'E',
-        templateUrl: '../../views/partials/environment_form.html',
+        templateUrl: '../../views/partials/ticket_form.html',
         scope: {
             title: '@',
             callback: '&',
-            environment: '=',
+            ticket: '=',
             submitIcon: '@'
         }
     };
