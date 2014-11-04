@@ -10,7 +10,7 @@ springbok.factory('ticketService', function($resource) {
 
     return {
         save: function(toSave) {
-            SINGLE_TICKET_RESOURCE.save(toSave);
+            return SINGLE_TICKET_RESOURCE.save(toSave).$promise;
         },
 
         update: function(toUpdate) {

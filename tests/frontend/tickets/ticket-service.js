@@ -5,11 +5,15 @@ describe('Ticket service', function() {
     var ticketService;
 
     var fakeResource = {
-        save: sinon.spy(),
+        save: function() {
+            return {$promise: ''}
+        },
         update: sinon.spy(),
         get: sinon.spy(),
         query: sinon.spy()
     };
+
+    sinon.spy(fakeResource, 'save');
 
     var $resource = function() {
         return fakeResource;
