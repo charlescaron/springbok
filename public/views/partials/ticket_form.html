@@ -7,7 +7,12 @@
         <textarea id="create_ticket_description" class="form-control" ng-model="ticket.description" placeholder="Enter description" maxlength="2000" rows="8" cols="50"></textarea>
     </div>
     <div class="form-group">
-        <input type="text" id="create_ticket_env" class="form-control" ng-model="ticket.environment" placeholder="Enter environment" size="50"/>
+        <div class="btn-group">
+            <label class="btn btn-default" ng-repeat="env in environments">
+                <input type="radio" ng-model="ticket.environment" value="{{env._id}}" required />
+                {{env.name}}
+            </label>
+        </div>
     </div>
     <button ng-click="callback(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon {{submitIcon}}"></span></button>
 </form>

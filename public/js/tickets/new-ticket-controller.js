@@ -10,6 +10,5 @@ springbok.controller('newTicketController', function($scope, ticketService, $loc
         });
     };
 
-
 });
 

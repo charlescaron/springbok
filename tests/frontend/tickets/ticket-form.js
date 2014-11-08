@@ -4,8 +4,14 @@ describe('Ticket form directive', function() {
 
     var ticketForm, scope;
 
+    var environmentService = {
+        getAll: function(callback) {callback('Env list');}
+    };
+
     beforeEach(function() {
-        module('springbok', 'templates');
+        module('springbok', 'templates', function($provide) {
+            $provide.value('environmentService', environmentService);
+        });
 
         inject(function($compile, $rootScope) {
 
@@ -24,4 +30,8 @@ describe('Ticket form directive', function() {
         expect(ticketForm.html()).to.contain('icon');
     });
 
+    it('should load the list of environments', function(){
+        ticketForm.isolateScope().$apply();
+        expect(ticketForm.isolateScope().environments).to.equal('Env list');
+    });
 });
