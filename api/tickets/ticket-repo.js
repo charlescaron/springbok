@@ -24,13 +24,15 @@ module.exports = {
     create: function(req, res) {
         currentResponse = res;
         var rawTicket = req.body;
-        var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, environment: rawTicket.environment});
+        var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
+            environment: rawTicket.environment});
         converted.save(processResponse);
     },
     update: function(req, res) {
         currentResponse = res;
         var rawTicket = req.body;
-        var converted = {title: rawTicket.title, status: rawTicket.status, environment: rawTicket.environment};
+        var converted = {title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
+            environment: rawTicket.environment};
         Ticket.findByIdAndUpdate(rawTicket._id, converted, processResponse);
     }
 };
