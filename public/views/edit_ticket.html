@@ -9,7 +9,7 @@
         <form role="form" name="eventForm" novalidate>
             <div class="form-group">
                 <textarea name="event_text" name="text" class="form-control" ng-model="event.text" ng-class="{'has-error': eventForm.text.$error.required && eventForm.text.$dirty}"
-                          placeholder="What is going on ?" rows="13" cols="50" required></textarea>
+                          placeholder="What is going on ?" maxlength="2000" rows="13" cols="50" required></textarea>
             </div>
             <button ng-click="addEvent(); eventForm.$setPristine()" ng-disabled="envForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
         </form>

@@ -1,6 +1,6 @@
 'use strict';
 
-var TEXT_MAX_LENGTH = 1000;
+var TEXT_MAX_LENGTH = 2000;
 var ID_LENGTH = 24;
 
 var BAD_ID = "The event ticket ID must be an alphanumeric string of 24 characters. Don't play with this.";

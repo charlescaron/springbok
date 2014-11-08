@@ -8,7 +8,7 @@ var BAD_DESC = "The environment description cannot have more than " + DESC_MAX_L
 
 module.exports = {
     checkCreationAttributes: function(req, res, next) {
-        req.checkBody('name', BAD_NAME).len(1, NAME_MAX_LENGTH).isAlphanumeric();
+        req.checkBody('name', BAD_NAME).len(1, NAME_MAX_LENGTH);
         req.checkBody('description', BAD_DESC).optional().len(0, DESC_MAX_LENGTH);
         next();
     }
