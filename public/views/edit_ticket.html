@@ -22,7 +22,7 @@
 
     <div class="col-md-12">
         <div ng-repeat="event in events">
-            <p>On {{event.date}},</p>
+            <p>On {{ event.date | date: 'yyyy-MM-dd HH:mm:ss Z'}},</p>
             <blockquote>
                 <p>{{event.text}}</p>
             </blockquote>

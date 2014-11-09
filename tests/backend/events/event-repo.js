@@ -25,7 +25,15 @@ describe('the event API', function(){
             json: sinon.spy()
         };
 
-        Event.find = function(query, callback) {
+        Event.find = function() {
+            return Event;
+        };
+
+        Event.sort = function() {
+            return Event;
+        };
+
+        Event.exec = function(callback) {
             callback(undefined, {});
         };
     };

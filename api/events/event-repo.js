@@ -15,7 +15,7 @@ var processResponse = function(err, response) {
 module.exports = {
     getByTicketId: function(req, res) {
         currentResponse = res;
-        Event.find({ticket: req.params.id}, processResponse);
+        Event.find({ticket: req.params.id}).sort({date: 'desc'}).exec(processResponse);
     },
     create: function(req, res) {
         currentResponse = res;
