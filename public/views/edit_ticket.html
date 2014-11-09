@@ -6,12 +6,12 @@
 
     <div class="col-md-4 col-md-offset-1 well">
         <h2>Add an event</h2>
-        <form role="form" name="eventForm" novalidate>
-            <div class="form-group">
-                <textarea name="event_text" name="text" class="form-control" ng-model="event.text" ng-class="{'has-error': eventForm.text.$error.required && eventForm.text.$dirty}"
-                          placeholder="What is going on ?" maxlength="2000" rows="13" cols="50" required></textarea>
+        <form role="form" name="eventForm" id="eventForm" novalidate>
+            <div class="form-group" ng-class="{'has-error': eventForm.text.$error.required && eventForm.text.$dirty}">
+                <textarea name="text" class="form-control" ng-model="event.text" placeholder="What is going on ?"
+                          maxlength="2000" rows="13" cols="50" required form="eventForm"></textarea>
             </div>
-            <button ng-click="addEvent(); eventForm.$setPristine()" ng-disabled="envForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+            <button ng-click="addEvent(); eventForm.$setPristine()" ng-disabled="eventForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
         </form>
     </div>
 
