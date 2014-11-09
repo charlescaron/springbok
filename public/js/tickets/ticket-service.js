@@ -7,6 +7,7 @@ springbok.factory('ticketService', function($resource) {
         'update': { method:'PUT' }
     });
     var ACTIVE_TICKETS_RESOURCE = $resource("/api/tickets/active");
+    var STATUS_RESOURCE = $resource("/api/tickets/statuses");
 
     return {
         save: function(toSave) {
@@ -23,6 +24,10 @@ springbok.factory('ticketService', function($resource) {
 
         getAllActive: function(callback) {
             ACTIVE_TICKETS_RESOURCE.query(callback);
+        },
+
+        getStatuses: function(callback) {
+            STATUS_RESOURCE.query(callback);
         }
     };
 

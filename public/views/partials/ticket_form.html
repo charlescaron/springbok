@@ -14,5 +14,13 @@
             </label>
         </div>
     </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default" ng-repeat="status in statuses">
+                <input type="radio" ng-model="ticket.status" value="{{status.id}}" required />
+                {{status.label}}
+            </label>
+        </div>
+    </div>
     <button ng-click="callback(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon {{submitIcon}}"></span></button>
 </form>

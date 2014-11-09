@@ -36,28 +36,29 @@ describe('the ticket API', function(){
     };
 
     it('should get all active tickets', function(){
-
         ticketRepo.getAllActive({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
     it('should get a ticket by ID', function(){
-
         ticketRepo.getById({params: {id: 1234}}, fakeResponse);
         expect(Ticket.findById).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
     it('should create a new ticket', function(){
-
         ticketRepo.create({body: {title: 'Test', status: 'active', environment: 1234}}, fakeResponse);
         expect(fakeResponse.json).to.have.been.called;
     });
 
     it('should update an existing ticket', function(){
-
         ticketRepo.update({body: {title: 'Test', description: 'Test', environment: 1234}}, fakeResponse);
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
+    it('should get all possible statuses for a ticket', function(){
+        ticketRepo.getStatuses({}, fakeResponse);
         expect(fakeResponse.json).to.have.been.called;
     });
 

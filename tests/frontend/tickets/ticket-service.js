@@ -48,4 +48,9 @@ describe('Ticket service', function() {
         expect(fakeResource.query).to.have.been.called;
     });
 
+    it('should get available statuses for a ticket', function(){
+        ticketService.getStatuses();
+        expect(fakeResource.query).to.have.been.called;
+    });
+
 });

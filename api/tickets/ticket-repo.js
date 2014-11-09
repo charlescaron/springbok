@@ -1,6 +1,7 @@
 'use strict';
 
 var Ticket = require('./ticket-resource');
+var Statuses = require('./ticket-status');
 
 var currentResponse;
 var processResponse = function(err, response) {
@@ -15,7 +16,10 @@ var processResponse = function(err, response) {
 module.exports = {
     getAllActive: function(req, res) {
         currentResponse = res;
-        Ticket.find({status: 'active'}, processResponse);
+        Ticket.find({status: {'$ne':'closed'}}, processResponse);
+    },
+    getStatuses: function(req, res) {
+        res.json(Statuses.getAll());
     },
     getById: function(req, res) {
         currentResponse = res;

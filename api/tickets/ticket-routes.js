@@ -8,6 +8,8 @@ var processor = require('./ticket-repo');
 
 router.get('/active', processor.getAllActive);
 
+router.get('/statuses', processor.getStatuses);
+
 router.get('/:id', globalValidator.checkUrlId,
     globalValidator.checkValidationErrors,
     processor.getById);
