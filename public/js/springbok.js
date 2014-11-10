@@ -21,6 +21,10 @@ springbok.config(function($routeProvider) {
         .when('/environments', {
             templateUrl : 'views/environments.html',
             controller  : 'environmentController'
+        })
+        .when('/create', {
+            templateUrl : 'views/alt/create.html',
+            controller  : 'createController'
         });
 
 });

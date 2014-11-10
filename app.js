@@ -13,6 +13,8 @@ var morgan = require('morgan');
 var staticPath = require('./index');
 var ticketsApi = require('./api/tickets/ticket-routes');
 var environmentsApi = require('./api/environments/environment-routes');
+var brandsApi = require('./api/brands/brand-routes');
+var problemsApi = require('./api/problems/problem-routes');
 var eventsApi = require('./api/events/event-routes');
 var logger = require("./logger");
 
@@ -30,6 +32,8 @@ app.use('/', staticPath);
 app.use(morgan('combined', { "stream": logger.stream }));
 app.use('/api/tickets', ticketsApi);
 app.use('/api/environments', environmentsApi);
+app.use('/api/brands', brandsApi);
+app.use('/api/problems', problemsApi);
 app.use('/api/events', eventsApi);
 
 module.exports = app;
