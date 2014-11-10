@@ -1,0 +1,124 @@
+
+    <div class="row alt">
+        <div class="col-lg-2 column">
+            <h3>Environment</h3>
+            <form role="form">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-10" style="padding-right:0px">
+                            <input class="form-control" type="text" placeholder="New environment" ng-model="newEnvironment"/>
+                        </div>
+                        <div class="col-xs-2" style="padding-left:0px">
+                            <button class="btn btn-default bt-xs" ng-click="createEnvironment()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ul class="list-unstyled">
+                <li class="environment"
+                    ng-repeat="environment in environments track by $index"
+                    ng-class="{selected: ticket.env.name == environment.name}"
+                    ng-click="selectEnvironment(environment)">
+                    <p>{{environment.name}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-2 column">
+            <h3>Problem</h3>
+            <form role="form">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-10" style="padding-right:0px">
+                            <input class="form-control" type="text" placeholder="New problem" ng-model="newProblem"/>
+                        </div>
+                        <div class="col-xs-2" style="padding-left:0px">
+                            <button class="btn btn-default bt-xs" ng-click="createProblem()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ul class="list-unstyled">
+                <li class="problem"
+                    ng-repeat="problem in problems track by $index"
+                    ng-class="{selected: ticket.problem.name == problem.name}"
+                    ng-click="selectProblem(problem)">
+                    <p >{{problem.name}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-2 column">
+            <h3>Brand</h3>
+            <form role="form">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-10" style="padding-right:0px">
+                            <input class="form-control" type="text" placeholder="New brand" ng-model="newBrand"/>
+                        </div>
+                        <div class="col-xs-2" style="padding-left:0px">
+                            <button class="btn btn-default bt-xs" ng-click="createBrand()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ul class="list-unstyled">
+                <li class="brand"
+                    ng-repeat="brand in brands track by $index"
+                    ng-class="{selected: ticket.brand.name == brand.name}"
+                    ng-click="selectBrand(brand)">
+                    <p >{{brand.name}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6 column">
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">What are we talking about ?</label>
+                    <input type="text" class="form-control" name="name" ng-model="ticket.name" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Elaborate a bit please</label>
+                    <textarea class="form-control" cols="50" rows="10" name="description" ng-model="ticket.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>How serious is this ?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="2" checked>
+                            <p class="bg-danger">Stop whatever you are doing and get to it! TOP PRIORITY.</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="1">
+                            <p class="bg-warning">It's okay, keep breathing. Within the week is fine. MEDIUM PRIORITY</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="0">
+                            <p class="bg-info">Seriously ? How can this be a problem ? LOW PRIORITY</p>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="severity" data-ng-model="ticket.severity" value="-1">
+                            <p class="">Not quite sure yet... NO PRIORITY</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary" ng-click="createTicket()">Create ticket</button>
+                </div>
+                <div class="form-group">
+                    <p class="text-danger">{{errorMsg}}</p>
+                </div>
+                {{ticket}}
+            </form>
+        </div>
+    </div>
