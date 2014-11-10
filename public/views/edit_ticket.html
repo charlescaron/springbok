@@ -1,15 +1,15 @@
 <div class="container-fluid">
-    <div class="col-md-7 well">
+    <div class="col-md-7 well well-sm">
         <ticket-form callback="save()" ticket="ticket"
                      submit-icon="glyphicon-pencil" title="Edit this ticket" />
     </div>
 
-    <div class="col-md-4 col-md-offset-1 well">
+    <div class="col-md-4 col-md-offset-1 well well-sm">
         <h2>Add an event</h2>
         <form role="form" name="eventForm" id="eventForm" novalidate>
             <div class="form-group" ng-class="{'has-error': eventForm.text.$error.required && eventForm.text.$dirty}">
                 <textarea name="text" class="form-control" ng-model="event.text" placeholder="What is going on ?"
-                          maxlength="2000" rows="13" cols="50" required form="eventForm"></textarea>
+                          maxlength="2000" rows="15" cols="50" required form="eventForm"></textarea>
             </div>
             <button ng-click="addEvent(); eventForm.$setPristine()" ng-disabled="eventForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
         </form>
