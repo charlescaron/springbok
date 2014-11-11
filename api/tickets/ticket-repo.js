@@ -29,7 +29,7 @@ module.exports = {
         currentResponse = res;
         var rawTicket = req.body;
         var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
-            environment: rawTicket.environment});
+            environment: rawTicket.environment, events: [{date: new Date(), text: 'Ticket created'}]});
         converted.save(processResponse);
     },
     update: function(req, res) {
@@ -38,7 +38,19 @@ module.exports = {
         var converted = {title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
             environment: rawTicket.environment};
         Ticket.findByIdAndUpdate(rawTicket._id, converted, processResponse);
+    },
+    addEvent: function(req, res) {
+        currentResponse = res;
+        Ticket.findById(req.params.id, function(err, response) {
+            if (err) {
+                res.status(500).json(err);
+            } else {
+                response.events.push({date: new Date(), text: req.body.text});
+                response.save(processResponse);
+            }
+        });
     }
+
 };
 
 

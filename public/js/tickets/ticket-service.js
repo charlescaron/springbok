@@ -1,6 +1,6 @@
 "use strict";
 
-springbok.factory('ticketService', function($resource) {
+springbok.factory('ticketService', function($resource, $http) {
 
     var SINGLE_TICKET_RESOURCE = $resource("/api/tickets/:id", null,
     {
@@ -12,6 +12,10 @@ springbok.factory('ticketService', function($resource) {
     return {
         save: function(toSave) {
             return SINGLE_TICKET_RESOURCE.save(toSave).$promise;
+        },
+
+        saveEvent: function(id, toSave) {
+            return $http.post('/api/tickets/' + id + '/event', toSave);
         },
 
         update: function(toUpdate) {

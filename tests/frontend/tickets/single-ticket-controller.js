@@ -2,7 +2,7 @@
 
 describe('Edit ticket controller', function() {
 
-    var scope, ticketService, routeParams, eventService, deferred;
+    var scope, ticketService, routeParams, deferred;
 
     beforeEach(module('springbok'));
 
@@ -13,7 +13,6 @@ describe('Edit ticket controller', function() {
         $controller('singleTicketController', {
             $scope: scope,
             ticketService: ticketService,
-            eventService: eventService,
             $routeParams: routeParams
         });
     }));
@@ -21,12 +20,9 @@ describe('Edit ticket controller', function() {
     var createMocks = function() {
         ticketService = {
             update: sinon.spy(),
-            getSingle: function(id, callback) {callback('Single ticket');}
+            getSingle: function(id, callback) {callback('Single ticket');},
+            saveEvent: function() {return deferred.promise}
         };
-        eventService = {
-            getByTicket: function(id, callback) {callback('Events');},
-            save: function() {return deferred.promise}
-        }
         routeParams = {
             id: '123456789012345678901234'
         };
@@ -41,7 +37,6 @@ describe('Edit ticket controller', function() {
     it('should show the selected ticket if a valid ID is provided', function(){
         scope.$apply();
         expect(scope.ticket).to.equal('Single ticket');
-        expect(scope.events).to.equal('Events');
     });
 
     it('should create a new event for the selected ticket', function(){
@@ -49,15 +44,15 @@ describe('Edit ticket controller', function() {
         //Fixtures
         scope.ticket = {_id: 1234};
         scope.event = {};
-        scope.events = ['Event 0'];
+        var expected = 'Ticket with new event';
 
         //Test
         scope.addEvent();
-        deferred.resolve('Event 1');
+        deferred.resolve({data: expected});
         scope.$apply();
 
         //Assertions
-        expect(scope.events[0]).to.equal('Event 1');
+        expect(scope.ticket).to.equal(expected);
         expect(scope.event).to.be.null;
     });
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-springbok.controller('singleTicketController', function($scope, ticketService, $routeParams, eventService) {
+springbok.controller('singleTicketController', function($scope, ticketService, $routeParams) {
 
     var ID_LENGTH = 24;
     var isValidId = function() {
@@ -11,9 +11,6 @@ springbok.controller('singleTicketController', function($scope, ticketService, $
     if (isValidId()) {
         ticketService.getSingle({id: $routeParams.id}, function(ticket) {
             $scope.ticket = ticket;
-            eventService.getByTicket(ticket._id, function (events) {
-                $scope.events = events;
-            });
         });
     }
 
@@ -22,9 +19,8 @@ springbok.controller('singleTicketController', function($scope, ticketService, $
     };
 
     $scope.addEvent = function() {
-        $scope.event.ticket = $scope.ticket._id;
-        eventService.save($scope.event).then(function(saved) {
-            $scope.events.unshift(saved);
+        ticketService.saveEvent($scope.ticket._id, $scope.event).then(function(saved) {
+            $scope.ticket = saved.data;
             $scope.event = null;
         });
     };

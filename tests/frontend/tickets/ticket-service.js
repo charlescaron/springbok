@@ -2,7 +2,7 @@
 
 describe('Ticket service', function() {
 
-    var ticketService;
+    var ticketService, httpBackend;
 
     var fakeResource = {
         save: function() {
@@ -23,8 +23,9 @@ describe('Ticket service', function() {
        module('springbok', function($provide) {
           $provide.value('$resource', $resource);
        });
-       inject(function ($injector) {
-          ticketService = $injector.get('ticketService');
+       inject(function ($injector, $httpBackend) {
+           httpBackend = $httpBackend;
+           ticketService = $injector.get('ticketService');
        });
     });
 
@@ -51,6 +52,21 @@ describe('Ticket service', function() {
     it('should get available statuses for a ticket', function(){
         ticketService.getStatuses();
         expect(fakeResource.query).to.have.been.called;
+    });
+
+    it('should add an event to a new ticket', function(){
+
+        //Fixtures
+        httpBackend.when('POST', '/api/tickets/1234/event').respond(200, ['An event']);
+        var response;
+        var callback = function(res) {
+            response = res.data;
+        };
+
+        //Test
+        ticketService.saveEvent( 1234, {}).then(callback);
+        httpBackend.flush();
+        expect(response[0]).to.equal('An event');
     });
 
 });
