@@ -3,10 +3,10 @@
 springbok.factory('ticketFilters', function(ticketService) {
 
     var filters = [
-        {label: 'Opened in the last 24 hours', loadFunction: ticketService.getAllActive},
-        {label: 'Unassigned', loadFunction: ticketService.getAllActive},
-        {label: 'Assigned for more than two days', loadFunction: ticketService.getAllActive},
-        {label: 'All active tickets', loadFunction: ticketService.getAllActive}
+        {label: "Nobody's working on those", loadFunction: ticketService.getIdle},
+        {label: 'Working on it', loadFunction: ticketService.getInProgress},
+        {label: 'Blocked by something', loadFunction: ticketService.getOnHold},
+        {label: 'Everything active', loadFunction: ticketService.getAllActive}
     ];
 
     return {

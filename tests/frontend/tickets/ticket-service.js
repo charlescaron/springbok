@@ -49,6 +49,21 @@ describe('Ticket service', function() {
         expect(fakeResource.query).to.have.been.called;
     });
 
+    it('should get idle tickets', function(){
+        ticketService.getIdle();
+        expect(fakeResource.query).to.have.been.called;
+    });
+
+    it('should get on hold tickets', function(){
+        ticketService.getOnHold();
+        expect(fakeResource.query).to.have.been.called;
+    });
+
+    it('should get tickets in progress', function(){
+        ticketService.getInProgress();
+        expect(fakeResource.query).to.have.been.called;
+    });
+
     it('should get available statuses for a ticket', function(){
         ticketService.getStatuses();
         expect(fakeResource.query).to.have.been.called;

@@ -7,6 +7,9 @@ springbok.factory('ticketService', function($resource, $http) {
         'update': { method:'PUT' }
     });
     var ACTIVE_TICKETS_RESOURCE = $resource("/api/tickets/active");
+    var IDLE_TICKETS_RESOURCE = $resource("/api/tickets/idle");
+    var ON_HOLD_TICKETS_RESOURCE = $resource("/api/tickets/onhold");
+    var IN_PROGRESS_TICKETS_RESOURCE = $resource("/api/tickets/inprogress");
     var STATUS_RESOURCE = $resource("/api/tickets/statuses");
 
     return {
@@ -28,6 +31,18 @@ springbok.factory('ticketService', function($resource, $http) {
 
         getAllActive: function(callback) {
             ACTIVE_TICKETS_RESOURCE.query(callback);
+        },
+
+        getOnHold: function(callback) {
+            ON_HOLD_TICKETS_RESOURCE.query(callback);
+        },
+
+        getInProgress: function(callback) {
+            IN_PROGRESS_TICKETS_RESOURCE.query(callback);
+        },
+
+        getIdle: function(callback) {
+            IDLE_TICKETS_RESOURCE.query(callback);
         },
 
         getStatuses: function(callback) {

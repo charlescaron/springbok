@@ -41,6 +41,24 @@ describe('the ticket API', function(){
         expect(fakeResponse.json).to.have.been.called;
     });
 
+    it('should get idle tickets', function(){
+        ticketRepo.getIdle({}, fakeResponse);
+        expect(Ticket.find).to.have.been.called;
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
+    it('should get on hold tickets', function(){
+        ticketRepo.getOnHold({}, fakeResponse);
+        expect(Ticket.find).to.have.been.called;
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
+    it('should get in progress tickets', function(){
+        ticketRepo.getInProgress({}, fakeResponse);
+        expect(Ticket.find).to.have.been.called;
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
     it('should get a ticket by ID', function(){
         ticketRepo.getById({params: {id: 1234}}, fakeResponse);
         expect(Ticket.findById).to.have.been.called;

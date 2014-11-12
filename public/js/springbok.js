@@ -7,7 +7,7 @@ springbok.config(function($routeProvider) {
 
     $routeProvider
         .when('/', {
-            templateUrl : 'views/active_tickets.html',
+            templateUrl : 'views/all_tickets.html',
             controller  : 'allTicketsController'
         })
         .when('/tickets/new', {

@@ -18,6 +18,18 @@ module.exports = {
         currentResponse = res;
         Ticket.find({status: {'$ne':'closed'}}, processResponse);
     },
+    getIdle: function(req, res) {
+        currentResponse = res;
+        Ticket.find({status: 'open'}, processResponse);
+    },
+    getOnHold: function(req, res) {
+        currentResponse = res;
+        Ticket.find({$or : [{status: 'blocked_third_party'}, {status: 'bugfix'}]}, processResponse);
+    },
+    getInProgress: function(req, res) {
+        currentResponse = res;
+        Ticket.find({status: 'in_progress'}, processResponse);
+    },
     getStatuses: function(req, res) {
         res.json(Statuses.getAll());
     },

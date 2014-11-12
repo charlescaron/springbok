@@ -9,6 +9,12 @@ var processor = require('./ticket-repo');
 
 router.get('/active', processor.getAllActive);
 
+router.get('/idle', processor.getIdle);
+
+router.get('/onhold', processor.getOnHold);
+
+router.get('/inprogress', processor.getInProgress);
+
 router.get('/statuses', processor.getStatuses);
 
 router.get('/:id', globalValidator.checkUrlId,

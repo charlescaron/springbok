@@ -1,6 +1,6 @@
 <div class="col-md-2">
 
-    <a ng-repeat="filter in filters" href="#/" ng-click="filter.loadFunction()" class="thumbnail">
+    <a ng-repeat="filter in filters" href="#/" ng-click="onFilterChange(filter.loadFunction)" class="thumbnail">
         {{filter.label}}
     </a>
 </div>

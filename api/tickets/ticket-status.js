@@ -7,7 +7,7 @@ function Status(_id, _label) {
 
 var statuses = [
     new Status('open', 'Open'),
-    new Status('in_resolution', 'Working on it'),
+    new Status('in_progress', 'Working on it'),
     new Status('blocked_third_party', 'Blocked by a third party'),
     new Status('bugfix', 'Requires bugfix'),
     new Status('closed', 'Closed')

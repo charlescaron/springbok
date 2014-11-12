@@ -2,9 +2,16 @@
 
 springbok.controller('allTicketsController', function($scope, ticketService, ticketFilters) {
 
-    ticketService.getAllActive(function(data) {
+    $scope.filters = ticketFilters.getAll();
+
+    ticketService.getIdle(function(data) {
         $scope.tickets = data;
     });
 
-    $scope.filters = ticketFilters.getAll();
+    $scope.onFilterChange = function(filterFunction) {
+
+        filterFunction(function (data) {
+           $scope.tickets = data;
+        });
+    };
 });
