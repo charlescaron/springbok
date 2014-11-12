@@ -10,7 +10,7 @@ describe('Create new ticket controller', function() {
         q = $q;
         scope = $rootScope.$new();
         createMocks();
-        $controller('createController', {
+        $controller('createTicketController', {
             $scope: scope,
             ticketService: ticketService,
             environmentService: environmentService,

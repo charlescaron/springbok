@@ -1,15 +1,11 @@
 'use strict';
 
-springbok.controller('createController', function($scope, $location, ticketService, environmentService, problemService, brandService) {
+springbok.controller('createTicketController', function($scope, $location, ticketService, environmentService, problemService, brandService) {
 
     $scope.ticket = {};
-
     $scope.environments = environmentService.getAll();
-
     $scope.problems = problemService.getAll();
-
     $scope.brands = brandService.getAll();
-
 
     /**
      * Creation of new tickets
@@ -64,15 +60,14 @@ springbok.controller('createController', function($scope, $location, ticketServi
             severity: $scope.ticket.severity
         };
         ticketService.save(ticket).then(
-            function(){
-                $location.path("/");
+            function(ticket){
+                $location.path('/tickets/' + ticket._id);
             },
             function(error){
                 $scope.errorMsg = error;
             }
         );
     };
-
 
     /**
      * Creation of additional dependencies (environments, brands, problems)

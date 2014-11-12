@@ -11,8 +11,8 @@ springbok.config(function($routeProvider) {
             controller  : 'allTicketsController'
         })
         .when('/tickets/new', {
-            templateUrl : 'views/new_ticket.html',
-            controller  : 'newTicketController'
+            templateUrl : 'views/create_ticket.html',
+            controller  : 'createTicketController'
         })
         .when('/tickets/:id', {
             templateUrl : 'views/edit_ticket.html',
@@ -21,10 +21,6 @@ springbok.config(function($routeProvider) {
         .when('/environments', {
             templateUrl : 'views/environments.html',
             controller  : 'environmentController'
-        })
-        .when('/create', {
-            templateUrl : 'views/alt/create.html',
-            controller  : 'createController'
         });
 
 });
