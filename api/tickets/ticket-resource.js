@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var ticketSchema = new mongoose.Schema({
     title: String,
     status: String,
-    description: String,
+    description: { type: String, default: '' },
     environment: { type: mongoose.Schema.Types.ObjectId, ref: 'Environment' },
     events: [{date: Date, text: String}]
 });
