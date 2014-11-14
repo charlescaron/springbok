@@ -2,12 +2,12 @@
 
 describe('Create new ticket controller', function() {
 
-    var scope, ticketService, environmentService, brandService, problemService, location, q;
+    var scope, ticketService, environmentService, brandService, problemService, location, deferred;
 
     beforeEach(module('springbok'));
 
     beforeEach(inject(function($rootScope, $controller, $q) {
-        q = $q;
+        deferred = $q.defer();
         scope = $rootScope.$new();
         createMocks();
         $controller('createTicketController', {
@@ -16,7 +16,7 @@ describe('Create new ticket controller', function() {
             environmentService: environmentService,
             brandService: brandService,
             problemService: problemService,
-            location: location
+            $location: location
         });
     }));
 
@@ -25,35 +25,19 @@ describe('Create new ticket controller', function() {
             path: sinon.spy()
         }
         ticketService = {
-            save: function(){
-                var defer = q.defer();
-                defer.resolve();
-                return defer.promise;
-            }
+            save: function() {return deferred.promise;}
         },
         environmentService = {
             getAll: function() { return 'Environments list'; },
-            save: function(param){
-                var defer = q.defer();
-                defer.resolve(param);
-                return defer.promise;
-            }
+            save: function(param){return deferred.promise;}
         },
         brandService = {
             getAll: function() { return 'Brands list'; },
-            save: function(param){
-                var defer = q.defer();
-                defer.resolve(param);
-                return defer.promise;
-            }
+            save: function(param){return deferred.promise;}
         },
         problemService = {
             getAll: function() { return 'Problems list'; },
-            save: function(param){
-                var defer = q.defer();
-                defer.resolve(param);
-                return defer.promise;
-            }
+            save: function(param){return deferred.promise;}
         }
 };
 
@@ -92,26 +76,30 @@ describe('Create new ticket controller', function() {
     });
 
     it('should create a new environment', function(){
+
         scope.newEnvironment = "test";
         scope.createEnvironment();
-
-        //TODO find a way to test that brand service has been called with { name: 'test' }
+        deferred.resolve();
+        scope.$apply();
+        expect(scope.newEnvironment).to.be.null;
         expect(scope.environments).to.equal('Environments list');
     });
 
     it('should create a new problem', function(){
         scope.newProblem = "test";
         scope.createProblem();
-
-        //TODO find a way to test that problem service has been called with { name: 'test' }
+        deferred.resolve();
+        scope.$apply();
+        expect(scope.newProblem).to.be.null;
         expect(scope.problems).to.equal('Problems list');
     });
 
     it('should create a new brand', function(){
         scope.newBrand = "test";
         scope.createBrand();
-
-        //TODO find a way to test that environment service has been called with { name: 'test' }
+        deferred.resolve();
+        scope.$apply();
+        expect(scope.newBrand).to.be.null;
         expect(scope.brands).to.equal('Brands list');
     });
 
@@ -119,20 +107,16 @@ describe('Create new ticket controller', function() {
         scope.ticket.problem = {name: "problem"};
         scope.ticket.env = {name: "environment"};
         scope.ticket.brand = {name: "brand"};
-        scope.$digest();
+        scope.$apply();
         expect(scope.ticket.name).to.equal("problem in environment for brand");
     });
 
-    /*it('should redirect to tickets page after creation', function(){
+    it('should create a new ticket', function() {
+
+        scope.ticket = {};
         scope.createTicket();
-        expect(location.path).to.have.been.calledWith("/");
-    });*/
-
-/*    it('should create a ticket', function() {
-        var deferred = q.defer();
-        sinon.stub(ticketService, 'save').returns(deferred.promise);
-        deferred.resolve();
-
-        expect(ticketService.save).to.have.been.calledWith();
-    });*/
+        deferred.resolve({_id: 1234});
+        scope.$apply();
+        expect(location.path).to.have.been.calledWith('/tickets/1234');
+    });
 });

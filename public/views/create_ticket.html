@@ -2,14 +2,14 @@
     <div class="row alt">
         <div class="col-lg-2 column">
             <h3>Environment</h3>
-            <form role="form">
+            <form role="form" name="envForm" novalidate>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-10" style="padding-right:0px">
-                            <input class="form-control" type="text" placeholder="New environment" ng-model="newEnvironment"/>
+                        <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': envForm.name.$error.required && envForm.name.$dirty}">
+                            <input name="name" class="form-control" type="text" placeholder="New environment" ng-model="newEnvironment" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
-                            <button class="btn btn-default bt-xs" ng-click="createEnvironment()">
+                            <button class="btn btn-default bt-xs" ng-click="createEnvironment(); envForm.$setPristine()" ng-disabled="envForm.$invalid">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
@@ -27,14 +27,14 @@
         </div>
         <div class="col-lg-2 column">
             <h3>Problem</h3>
-            <form role="form">
+            <form role="form" name="problemForm" novalidate>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-10" style="padding-right:0px">
-                            <input class="form-control" type="text" placeholder="New problem" ng-model="newProblem"/>
+                        <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': problemForm.name.$error.required && problemForm.name.$dirty}">
+                            <input name="name" class="form-control" type="text" placeholder="New problem" ng-model="newProblem" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
-                            <button class="btn btn-default bt-xs" ng-click="createProblem()">
+                            <button class="btn btn-default bt-xs" ng-click="createProblem(); problemForm.$setPristine()" ng-disabled="problemForm.$invalid">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
@@ -52,14 +52,14 @@
         </div>
         <div class="col-lg-2 column">
             <h3>Brand</h3>
-            <form role="form">
+            <form role="form" name="brandForm" novalidate>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-10" style="padding-right:0px">
-                            <input class="form-control" type="text" placeholder="New brand" ng-model="newBrand"/>
+                        <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': brandForm.name.$error.required && brandForm.name.$dirty}">
+                            <input name="name" class="form-control" type="text" placeholder="New brand" ng-model="newBrand" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
-                            <button class="btn btn-default bt-xs" ng-click="createBrand()">
+                            <button class="btn btn-default bt-xs" ng-click="createBrand(); brandForm.$setPristine()" ng-disabled="brandForm.$invalid">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
@@ -76,14 +76,14 @@
             </ul>
         </div>
         <div class="col-lg-6 column">
-            <form role="form">
-                <div class="form-group">
-                    <label for="name">What are we talking about ?</label>
-                    <input type="text" class="form-control" name="name" ng-model="ticket.name" />
+            <form role="form" name="ticketForm" novalidate>
+                <div class="form-group" ng-class="{'has-error': ticketForm.name.$error.required && ticketForm.name.$dirty}">
+                    <label for="ticketName">What are we talking about ?</label>
+                    <input id="ticketName" type="text" class="form-control" name="name" ng-model="ticket.name" required/>
                 </div>
                 <div class="form-group">
-                    <label for="description">Elaborate a bit please</label>
-                    <textarea class="form-control" cols="50" rows="10" name="description" ng-model="ticket.description"></textarea>
+                    <label for="ticketDescription">Elaborate a bit please</label>
+                    <textarea id="ticketDescription" class="form-control" cols="50" rows="10" name="description" ng-model="ticket.description"></textarea>
                 </div>
                 <div class="form-group">
                     <label>How serious is this ?</label>
@@ -113,12 +113,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary" ng-click="createTicket()">Create ticket</button>
+                    <button class="btn btn-lg btn-primary" ng-click="createTicket(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid">Create ticket</button>
                 </div>
                 <div class="form-group">
                     <p class="text-danger">{{errorMsg}}</p>
                 </div>
-                {{ticket}}
             </form>
         </div>
     </div>

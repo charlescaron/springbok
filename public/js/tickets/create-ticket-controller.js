@@ -76,6 +76,7 @@ springbok.controller('createTicketController', function($scope, $location, ticke
         environmentService.save({
             name: $scope.newEnvironment
         }).then(function(){
+            $scope.newEnvironment = null;
             $scope.environments = environmentService.getAll();
         });
     };
@@ -84,6 +85,7 @@ springbok.controller('createTicketController', function($scope, $location, ticke
         problemService.save({
             name: $scope.newProblem
         }).then(function(){
+            $scope.newProblem = null;
             $scope.problems = problemService.getAll();
         });
     };
@@ -93,6 +95,7 @@ springbok.controller('createTicketController', function($scope, $location, ticke
         brandService.save({
             name: $scope.newBrand
         }).then(function(){
+            $scope.newBrand = null;
             $scope.brands = brandService.getAll();
         });
     };
