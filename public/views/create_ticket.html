@@ -6,7 +6,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': envForm.name.$error.required && envForm.name.$dirty}">
-                            <input name="name" class="form-control" type="text" placeholder="New environment" ng-model="newEnvironment" required/>
+                            <input name="name" class="form-control" type="text" placeholder="New environment" ng-model="newEnvironment" maxlength="30" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
                             <button class="btn btn-default bt-xs" ng-click="createEnvironment(); envForm.$setPristine()" ng-disabled="envForm.$invalid">
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': problemForm.name.$error.required && problemForm.name.$dirty}">
-                            <input name="name" class="form-control" type="text" placeholder="New problem" ng-model="newProblem" required/>
+                            <input name="name" class="form-control" type="text" placeholder="New problem" ng-model="newProblem" maxlength="30" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
                             <button class="btn btn-default bt-xs" ng-click="createProblem(); problemForm.$setPristine()" ng-disabled="problemForm.$invalid">
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': brandForm.name.$error.required && brandForm.name.$dirty}">
-                            <input name="name" class="form-control" type="text" placeholder="New brand" ng-model="newBrand" required/>
+                            <input name="name" class="form-control" type="text" placeholder="New brand" ng-model="newBrand" maxlength="30" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
                             <button class="btn btn-default bt-xs" ng-click="createBrand(); brandForm.$setPristine()" ng-disabled="brandForm.$invalid">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary" ng-click="createTicket(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid">Create ticket</button>
+                    <button class="btn btn-default" ng-click="createTicket(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid">Create ticket</button>
                 </div>
                 <div class="form-group">
                     <p class="text-danger">{{errorMsg}}</p>
