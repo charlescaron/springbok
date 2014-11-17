@@ -17,7 +17,7 @@
                 </div>
             </form>
             <ul class="list-unstyled">
-                <li class="environment"
+                <li class="environment rounded-corners"
                     ng-repeat="environment in environments track by $index"
                     ng-class="{selected: ticket.env.name == environment.name}"
                     ng-click="selectEnvironment(environment)">
@@ -42,7 +42,7 @@
                 </div>
             </form>
             <ul class="list-unstyled">
-                <li class="problem"
+                <li class="problem rounded-corners"
                     ng-repeat="problem in problems track by $index"
                     ng-class="{selected: ticket.problem.name == problem.name}"
                     ng-click="selectProblem(problem)">
@@ -67,7 +67,7 @@
                 </div>
             </form>
             <ul class="list-unstyled">
-                <li class="brand"
+                <li class="brand rounded-corners"
                     ng-repeat="brand in brands track by $index"
                     ng-class="{selected: ticket.brand.name == brand.name}"
                     ng-click="selectBrand(brand)">
