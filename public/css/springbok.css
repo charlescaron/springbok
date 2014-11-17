@@ -4,11 +4,6 @@ body {
     padding-bottom: 70px;
 }
 
-/* Global: Rounder corners imitating the bootstrap tile class */
-.rounded-corners {
-    border-radius: 4px;
-}
-
 /* Create ticket page style  */
 .alt { height: 100% }
     .alt.row { margin: 0; }
