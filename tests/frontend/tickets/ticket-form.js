@@ -8,6 +8,10 @@ describe('Ticket form directive', function() {
         getAll: function(callback) {callback('Env list');}
     };
 
+    var problemService = {
+        getAll: function(callback) {callback('Prob list');}
+    };
+
     var ticketService = {
         getStatuses: function(callback) {callback('List');}
     };
@@ -15,6 +19,7 @@ describe('Ticket form directive', function() {
     beforeEach(function() {
         module('springbok', 'templates', function($provide) {
             $provide.value('environmentService', environmentService);
+            $provide.value('problemService', problemService);
             $provide.value('ticketService', ticketService);
         });
 
@@ -38,6 +43,11 @@ describe('Ticket form directive', function() {
     it('should load the list of environments', function(){
         ticketForm.isolateScope().$apply();
         expect(ticketForm.isolateScope().environments).to.equal('Env list');
+    });
+
+    it('should load the list of problems', function(){
+        ticketForm.isolateScope().$apply();
+        expect(ticketForm.isolateScope().problems).to.equal('Prob list');
     });
 
     it('should load the list of ticket status', function(){

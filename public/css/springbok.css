@@ -9,6 +9,10 @@ body {
     background-color: #718DA5;
 }
 
+.problem-color {
+    background-color: #80AC88;
+}
+
 /* Create ticket page style  */
 .alt { height: 100% }
     .alt.row { margin: 0; }

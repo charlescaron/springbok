@@ -54,9 +54,9 @@ springbok.controller('createTicketController', function($scope, $location, ticke
             status: "open",
             title: $scope.ticket.name,
             description: $scope.ticket.description,
-            environment: $scope.ticket.env ? $scope.ticket.env._id : null,
-            brand: $scope.ticket.brand ? $scope.ticket.brand._id : null,
-            problem: $scope.ticket.problem ? $scope.ticket.problem._id : null,
+            environment: $scope.ticket.env ? $scope.ticket.env._id : undefined,
+            brand: $scope.ticket.brand ? $scope.ticket.brand._id : undefined,
+            problem: $scope.ticket.problem ? $scope.ticket.problem._id : undefined,
             severity: $scope.ticket.severity
         };
         ticketService.save(ticket).then(

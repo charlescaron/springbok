@@ -41,14 +41,14 @@ module.exports = {
         currentResponse = res;
         var rawTicket = req.body;
         var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
-            environment: rawTicket.environment, events: [{date: new Date(), text: 'Ticket created'}]});
+            environment: rawTicket.environment, problem: rawTicket.problem, events: [{date: new Date(), text: 'Ticket created'}]});
         converted.save(processResponse);
     },
     update: function(req, res) {
         currentResponse = res;
         var rawTicket = req.body;
         var converted = {title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
-            environment: rawTicket.environment};
+            environment: rawTicket.environment, problem: rawTicket.problem};
         Ticket.findByIdAndUpdate(rawTicket._id, converted, processResponse);
     },
     addEvent: function(req, res) {

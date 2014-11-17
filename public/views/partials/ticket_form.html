@@ -22,5 +22,13 @@
             </label>
         </div>
     </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default problem-color" ng-repeat="prob in problems">
+                <input type="radio" ng-model="ticket.problem" value="{{prob._id}}"/>
+                {{prob.name}}
+            </label>
+        </div>
+    </div>
     <button ng-click="callback(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon {{submitIcon}}"></span></button>
 </form>
