@@ -4,7 +4,7 @@ springbok.directive('ticketForm', function() {
     return {
         restrict: 'E',
         templateUrl: '../../views/partials/ticket_form.html',
-        controller: function($scope, environmentService, ticketService, problemService) {
+        controller: function($scope, environmentService, ticketService, problemService, brandService) {
 
             environmentService.getAll(function(data) {
                 $scope.environments = data;
@@ -16,6 +16,10 @@ springbok.directive('ticketForm', function() {
 
             problemService.getAll(function(data) {
                 $scope.problems = data;
+            });
+
+            brandService.getAll(function(data) {
+                $scope.brands = data;
             });
         },
         scope: {

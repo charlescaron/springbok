@@ -16,11 +16,16 @@ describe('Ticket form directive', function() {
         getStatuses: function(callback) {callback('List');}
     };
 
+    var brandService = {
+        getAll: function(callback) {callback('Brand list');}
+    };
+
     beforeEach(function() {
         module('springbok', 'templates', function($provide) {
             $provide.value('environmentService', environmentService);
             $provide.value('problemService', problemService);
             $provide.value('ticketService', ticketService);
+            $provide.value('brandService', brandService);
         });
 
         inject(function($compile, $rootScope) {
@@ -48,6 +53,11 @@ describe('Ticket form directive', function() {
     it('should load the list of problems', function(){
         ticketForm.isolateScope().$apply();
         expect(ticketForm.isolateScope().problems).to.equal('Prob list');
+    });
+
+    it('should load the list of brands', function(){
+        ticketForm.isolateScope().$apply();
+        expect(ticketForm.isolateScope().brands).to.equal('Brand list');
     });
 
     it('should load the list of ticket status', function(){

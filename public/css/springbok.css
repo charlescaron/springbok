@@ -13,6 +13,10 @@ body {
     background-color: #80AC88;
 }
 
+.brand-color {
+    background-color: #FF841E;
+}
+
 /* Create ticket page style  */
 .alt { height: 100% }
     .alt.row { margin: 0; }

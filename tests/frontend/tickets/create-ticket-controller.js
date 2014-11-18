@@ -113,7 +113,7 @@ describe('Create new ticket controller', function() {
 
     it('should create a new ticket', function() {
 
-        scope.ticket = {};
+        scope.ticket = {env: {_id: 1234}};
         scope.createTicket();
         deferred.resolve({_id: 1234});
         scope.$apply();

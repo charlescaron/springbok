@@ -8,6 +8,7 @@ var ticketSchema = new mongoose.Schema({
     description: { type: String, default: '' },
     environment: { type: mongoose.Schema.Types.ObjectId, ref: 'Environment' },
     problem: { type: mongoose.Schema.Types.ObjectId, ref: 'Problem' },
+    brand: { type: mongoose.Schema.Types.ObjectId, ref: 'Brand' },
     events: [{date: Date, text: String}]
 });
 
