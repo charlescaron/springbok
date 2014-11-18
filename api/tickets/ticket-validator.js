@@ -1,6 +1,7 @@
 'use strict';
 
 var Statuses = require('./ticket-status');
+var Priorities = require('./ticket-priority');
 
 var TITLE_MAX_LENGTH = 150;
 var DESC_MAX_LENGTH = 2000;
@@ -12,12 +13,14 @@ var BAD_ENV = "You must choose an environment from the predefined list";
 var BAD_PROBLEM = "You must choose a problem from the predefined list";
 var BAD_BRAND = "You must choose a brand from the predefined list";
 var BAD_STATUS = "The ticket status must be one of " + Statuses.getLabels();
+var BAD_PRIORITY = "The ticket priority must be one of " + Priorities.getLabels();
 
 module.exports = {
     checkCreationAttributes: function(req, res, next) {
         req.checkBody('title', BAD_TITLE).len(1, TITLE_MAX_LENGTH);
         req.checkBody('description', BAD_DESC).len(0, DESC_MAX_LENGTH);
         req.checkBody('status', BAD_STATUS).isIn(Statuses.getIds());
+        req.checkBody('priority', BAD_PRIORITY).isIn(Priorities.getIds());
         req.checkBody('environment', BAD_ENV).len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
         req.checkBody('problem', BAD_PROBLEM).optional().len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
         req.checkBody('brand', BAD_BRAND).optional().len(ID_LENGTH, ID_LENGTH).isAlphanumeric();

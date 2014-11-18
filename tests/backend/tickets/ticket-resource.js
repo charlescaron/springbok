@@ -10,6 +10,7 @@ describe('the structure of the Ticket model', function(){
         expect(Ticket.modelName).to.equal('Ticket');
         expect(Ticket.schema.paths).to.have.property('title');
         expect(Ticket.schema.paths).to.have.property('status');
+        expect(Ticket.schema.paths).to.have.property('priority');
         expect(Ticket.schema.paths).to.have.property('description');
         expect(Ticket.schema.paths).to.have.property('environment');
         expect(Ticket.schema.paths).to.have.property('problem');

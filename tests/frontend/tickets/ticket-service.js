@@ -69,6 +69,11 @@ describe('Ticket service', function() {
         expect(fakeResource.query).to.have.been.called;
     });
 
+    it('should get available priorities for a ticket', function(){
+        ticketService.getPriorities();
+        expect(fakeResource.query).to.have.been.called;
+    });
+
     it('should add an event to a new ticket', function(){
 
         //Fixtures

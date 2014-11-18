@@ -80,6 +80,11 @@ describe('the ticket API', function(){
         expect(fakeResponse.json).to.have.been.called;
     });
 
+    it('should get all possible priorities for a ticket', function(){
+        ticketRepo.getPriorities({}, fakeResponse);
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
     it('should add an event to an existing ticket', function(){
         ticketRepo.addEvent({text: 'Event text', params: {id: 1234}}, fakeResponse);
         expect(fakeResponse.json).to.have.been.called;

@@ -2,6 +2,7 @@
 
 var Ticket = require('./ticket-resource');
 var Statuses = require('./ticket-status');
+var Priorities = require('./ticket-priority');
 
 var currentResponse;
 var processResponse = function(err, response) {
@@ -33,6 +34,9 @@ module.exports = {
     getStatuses: function(req, res) {
         res.json(Statuses.getAll());
     },
+    getPriorities: function(req, res) {
+        res.json(Priorities.getAll());
+    },
     getById: function(req, res) {
         currentResponse = res;
         Ticket.findById(req.params.id, processResponse);
@@ -40,16 +44,16 @@ module.exports = {
     create: function(req, res) {
         currentResponse = res;
         var rawTicket = req.body;
-        var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
-            environment: rawTicket.environment, problem: rawTicket.problem, brand: rawTicket.brand,
-            events: [{date: new Date(), text: 'Ticket created'}]});
+        var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, priority: rawTicket.priority,
+            description: rawTicket.description, environment: rawTicket.environment, problem: rawTicket.problem,
+            brand: rawTicket.brand, events: [{date: new Date(), text: 'Ticket created'}]});
         converted.save(processResponse);
     },
     update: function(req, res) {
         currentResponse = res;
         var rawTicket = req.body;
         var converted = {title: rawTicket.title, status: rawTicket.status, description: rawTicket.description,
-            environment: rawTicket.environment};
+            environment: rawTicket.environment, priority: rawTicket.priority};
         if (rawTicket.problem) {
             converted.problem = rawTicket.problem;
         }

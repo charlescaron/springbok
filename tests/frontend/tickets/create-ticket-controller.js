@@ -25,7 +25,8 @@ describe('Create new ticket controller', function() {
             path: sinon.spy()
         }
         ticketService = {
-            save: function() {return deferred.promise;}
+            save: function() {return deferred.promise;},
+            getPriorities: function(callback) {callback('Priorities')}
         },
         environmentService = {
             getAll: function() { return 'Environments list'; },
@@ -41,6 +42,10 @@ describe('Create new ticket controller', function() {
         }
 };
 
+    it('should load the available priorities', function(){
+        scope.$apply();
+        expect(scope.priorities).to.equal('Priorities');
+    });
 
     it('should select an environment', function(){
         scope.selectEnvironment({_id: "1", name: "test"})

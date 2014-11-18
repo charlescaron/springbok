@@ -6,6 +6,9 @@ springbok.controller('createTicketController', function($scope, $location, ticke
     $scope.environments = environmentService.getAll();
     $scope.problems = problemService.getAll();
     $scope.brands = brandService.getAll();
+    ticketService.getPriorities(function(response) {
+        $scope.priorities = response;
+    });
 
     /**
      * Creation of new tickets
@@ -54,11 +57,13 @@ springbok.controller('createTicketController', function($scope, $location, ticke
             status: "open",
             title: $scope.ticket.name,
             description: $scope.ticket.description,
-            environment: $scope.ticket.env._id,
-            severity: $scope.ticket.severity
+            priority: $scope.ticket.priority
         };
         if ($scope.ticket.brand) {
             ticket.brand = $scope.ticket.brand._id;
+        }
+        if ($scope.ticket.env) {
+            ticket.environment = $scope.ticket.env._id;
         }
         if ($scope.ticket.problem) {
             ticket.problem = $scope.ticket.problem._id;

@@ -17,6 +17,8 @@ router.get('/inprogress', processor.getInProgress);
 
 router.get('/statuses', processor.getStatuses);
 
+router.get('/priorities', processor.getPriorities);
+
 router.get('/:id', globalValidator.checkUrlId,
     globalValidator.checkValidationErrors,
     processor.getById);

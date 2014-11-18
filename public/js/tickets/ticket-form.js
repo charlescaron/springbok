@@ -14,6 +14,10 @@ springbok.directive('ticketForm', function() {
                 $scope.statuses = data;
             });
 
+            ticketService.getPriorities(function(data) {
+                $scope.priorities = data;
+            });
+
             problemService.getAll(function(data) {
                 $scope.problems = data;
             });

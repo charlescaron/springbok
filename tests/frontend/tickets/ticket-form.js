@@ -13,7 +13,8 @@ describe('Ticket form directive', function() {
     };
 
     var ticketService = {
-        getStatuses: function(callback) {callback('List');}
+        getStatuses: function(callback) {callback('List');},
+        getPriorities: function(callback) {callback('List');}
     };
 
     var brandService = {
@@ -63,5 +64,10 @@ describe('Ticket form directive', function() {
     it('should load the list of ticket status', function(){
         ticketForm.isolateScope().$apply();
         expect(ticketForm.isolateScope().statuses).to.equal('List');
+    });
+
+    it('should load the list of ticket priorities', function(){
+        ticketForm.isolateScope().$apply();
+        expect(ticketForm.isolateScope().priorities).to.equal('List');
     });
 });
