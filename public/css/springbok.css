@@ -17,6 +17,10 @@ body {
     background-color: #FF841E;
 }
 
+.selected-color {
+    background-color: #DEDEDE;
+}
+
 /* Create ticket page style  */
 .alt { height: 100% }
     .alt.row { margin: 0; }

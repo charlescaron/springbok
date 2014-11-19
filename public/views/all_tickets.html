@@ -1,6 +1,7 @@
 <div class="col-md-2">
 
-    <a ng-repeat="filter in filters" href="#/" ng-click="onFilterChange(filter.loadFunction)" class="thumbnail">
+    <a ng-repeat="filter in filters" href="#/" ng-click="onFilterChange(filter)" class="thumbnail"
+            ng-class="{'selected-color': filter.id == selectedFilter.id}">
         {{filter.label}}
     </a>
 </div>

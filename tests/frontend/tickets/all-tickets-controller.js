@@ -21,7 +21,7 @@ describe('Global ticket controller', function() {
             getIdle: function(callback) {callback('Ticket list');}
         },
         ticketFilters = {
-            getAll: function() {return 'Filters'}
+            getAll: function() {return ['Filters']}
         }
     };
 
@@ -39,12 +39,17 @@ describe('Global ticket controller', function() {
         var expected = 'Filtered ticket list';
 
         //Test and assertion
-        scope.onFilterChange(fakeFilter);
+        scope.onFilterChange({id: 'someFilter', loadFunction: fakeFilter});
         expect(scope.tickets).to.equal(expected);
+        expect(scope.selectedFilter.id).to.equal('someFilter');
     });
 
     it('should load the list of ticket filters', function(){
-        expect(scope.filters).to.equal('Filters');
+        expect(scope.filters).to.deep.equal(['Filters']);
+    });
+
+    it('should select the first filter when the page is loaded', function(){
+        expect(scope.selectedFilter).to.equal('Filters');
     });
 
 });

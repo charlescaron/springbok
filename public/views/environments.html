@@ -4,7 +4,8 @@
     </div>
     <div ng-repeat="environment in environments">
         <div class="col-md-2">
-            <a href="#/environments" ng-click="showEnvironmentDetails(environment)" class="thumbnail">
+            <a href="#/environments" ng-click="showEnvironmentDetails(environment)" class="thumbnail"
+               ng-class="{'selected-color': environment._id == selectedEnvironment._id}">
                 <p><strong>{{environment.name}}</strong></p>
                 <p>{{environment.description}}</p>
             </a>
