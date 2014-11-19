@@ -112,7 +112,7 @@ describe('Create new ticket controller', function() {
         scope.ticket.problem = {name: "problem"};
         scope.ticket.env = {name: "environment"};
         scope.ticket.brand = {name: "brand"};
-        scope.$apply();
+        scope.buildTicketName();
         expect(scope.ticket.name).to.equal("problem in environment for brand");
     });
 

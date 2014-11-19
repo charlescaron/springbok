@@ -20,13 +20,6 @@ springbok.controller('createTicketController', function($scope, $location, ticke
             ($scope.ticket.env ? " in " + $scope.ticket.env.name : " ") +
             ($scope.ticket.brand ? " for " + $scope.ticket.brand.name : " ");
     };
-    $scope.$watch(
-        "ticket",
-        function( newValue, oldValue ) {
-            $scope.buildTicketName();
-        },
-        true
-    );
 
     $scope.selectEnvironment = function(env) {
         if ($scope.ticket.env && $scope.ticket.env._id == env._id) {
