@@ -1,0 +1,7 @@
+.idea/
+tests/
+generated/
+karma.conf.js
+.travis.yml
+.jshintrc
+gulpfile.js

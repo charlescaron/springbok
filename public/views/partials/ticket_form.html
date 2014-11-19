@@ -1,0 +1,50 @@
+<h2>{{title}}</h2>
+<form novalidate role="form" name="ticketForm">
+    <div class="form-group" ng-class="{'has-error': ticketForm.title.$error.required && ticketForm.title.$dirty}">
+        <input type="text" id="create_ticket_id" name="title" class="form-control" ng-model="ticket.title" placeholder="Enter title" maxlength="150" required/>
+    </div>
+    <div class="form-group">
+        <textarea id="create_ticket_description" class="form-control" ng-model="ticket.description" placeholder="Enter description" maxlength="2000" rows="8" cols="50"></textarea>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default" ng-repeat="status in statuses">
+                <input type="radio" ng-model="ticket.status" value="{{status.id}}" required />
+                {{status.label}}
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default" ng-repeat="priority in priorities">
+                <input type="radio" ng-model="ticket.priority" value="{{priority.id}}" required />
+                <span class="bg-{{priority.severity}}">{{priority.shortLabel}}</span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default environment-color" ng-repeat="env in environments">
+                <input type="radio" ng-model="ticket.environment" value="{{env._id}}" required />
+                {{env.name}}
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default problem-color" ng-repeat="prob in problems">
+                <input type="radio" ng-model="ticket.problem" value="{{prob._id}}"/>
+                {{prob.name}}
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-default brand-color" ng-repeat="brand in brands">
+                <input type="radio" ng-model="ticket.brand" value="{{brand._id}}"/>
+                {{brand.name}}
+            </label>
+        </div>
+    </div>
+    <button ng-click="callback(); ticketForm.$setPristine()" ng-disabled="ticketForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon {{submitIcon}}"></span></button>
+</form>

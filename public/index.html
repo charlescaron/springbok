@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="springbok">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Springbok, the lightweight issue manager</title>
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/yeti/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/springbok.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-resource.min.js"></script>
+
+    <script src="js/springbok.js"></script>
+
+    <!-- Tickets -->
+    <script src="js/tickets/all-tickets-controller.js"></script>
+    <script src="js/tickets/create-ticket-controller.js"></script>
+    <script src="js/tickets/single-ticket-controller.js"></script>
+    <script src="js/tickets/ticket-service.js"></script>
+    <script src="js/tickets/ticket-filters.js"></script>
+    <script src="js/tickets/ticket-form.js"></script>
+
+    <!-- Brands -->
+    <script src="js/brands/brand-service.js"></script>
+
+    <!-- Problems -->
+    <script src="js/problems/problem-service.js"></script>
+
+    <!-- Environments -->
+    <script src="js/environments/environment-controller.js"></script>
+    <script src="js/environments/environment-service.js"></script>
+    <script src="js/environments/environment-form.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Springbok</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/tickets/new">New Ticket</a></li>
+                <li><a href="#/environments">Environments</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main ng-view></main>
+
+    <footer class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <p class="navbar-text navbar-right">
+                Source code available on
+                <a href="https://github.com/charlescaron/springbok" class="navbar-link">
+                    <img src="./img/github.png" width="5%" height="5%"/>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

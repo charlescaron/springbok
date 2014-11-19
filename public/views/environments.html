@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="col-md-12">
+        <h2>Existing environments</h2>
+    </div>
+    <div ng-repeat="environment in environments">
+        <div class="col-md-2">
+            <a href="#/environments" ng-click="showEnvironmentDetails(environment)" class="thumbnail"
+               ng-class="{'selected-color': environment._id == selectedEnvironment._id}">
+                <p><strong>{{environment.name}}</strong></p>
+                <p>{{environment.description}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="environments.length == 0"><span class="text-primary">Start by adding an environment!</span></div>
+
+    <div class="col-md-12" ng-show="selectedEnvironment">
+        <environment-form callback="updateEnvironment(selectedEnvironment)" environment="selectedEnvironment"
+                          submit-icon="glyphicon-pencil" title="Edit the selected environment" />
+    </div>
+
+    <div class="col-md-12"></div>
+    <div class="col-md-10 col-md-offset-1">
+        <hr/>
+    </div>
+
+    <div class="col-md-12">
+        <environment-form callback="addEnvironment(newEnvironment)" environment="newEnvironment"
+                          submit-icon="glyphicon-plus" title="Add a new environment" />
+    </div>
+
+</div>
+
+
+
+
+

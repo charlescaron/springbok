@@ -1,0 +1,4 @@
+{
+    "globalstrict": true,
+    "predef": ["require", "module", "__dirname", "angular", "springbok", "process"]
+}

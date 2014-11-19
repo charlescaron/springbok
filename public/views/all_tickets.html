@@ -1,0 +1,19 @@
+<div class="col-md-2">
+
+    <a ng-repeat="filter in filters" href="#/" ng-click="onFilterChange(filter)" class="thumbnail"
+            ng-class="{'selected-color': filter.id == selectedFilter.id}">
+        {{filter.label}}
+    </a>
+</div>
+
+<div class="col-md-10">
+    <table class="table table-striped table-bordered" ng-show="tickets.length > 0">
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr ng-repeat="ticket in tickets">
+            <td><a href="#/tickets/{{ticket._id}}">{{ticket.title}}</a></td>
+        </tr>
+    </table>
+    <p ng-show="tickets.length == 0">There are no tickets to manage. Good for you! Now go work on some features.</p>
+</div>

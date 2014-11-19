@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="col-md-7 well well-sm">
+        <ticket-form callback="save()" ticket="ticket"
+                     submit-icon="glyphicon-pencil" title="Edit this ticket" />
+    </div>
+
+    <div class="col-md-4 col-md-offset-1 well well-sm">
+        <h2>Add an event</h2>
+        <form role="form" name="eventForm" id="eventForm" novalidate>
+            <div class="form-group" ng-class="{'has-error': eventForm.text.$error.required && eventForm.text.$dirty}">
+                <textarea name="text" class="form-control" ng-model="event.text" placeholder="What is going on ?"
+                          maxlength="2000" rows="15" cols="50" required form="eventForm"></textarea>
+            </div>
+            <button ng-click="addEvent(); eventForm.$setPristine()" ng-disabled="eventForm.$invalid" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+        </form>
+    </div>
+
+    <div class="col-md-12"></div>
+    <div class="col-md-10 col-md-offset-1">
+        <hr/>
+    </div>
+
+    <div class="col-md-12">
+        <div ng-repeat="event in (ticket.events | orderBy: 'date':true)">
+            <p>On {{ event.date | date: 'yyyy-MM-dd HH:mm:ss Z'}},</p>
+            <blockquote>
+                <p>{{event.text}}</p>
+            </blockquote>
+        </div>
+        <div ng-show="ticket.events.length == 0"><span class="text-primary">There are no events for this ticket!</span></div>
+    </div>
+</div>
