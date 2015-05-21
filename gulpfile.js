@@ -33,6 +33,7 @@ gulp.task('test-back', function (done) {
 
     gulp.src(BACKEND_SCRIPTS)
         .pipe(istanbul())
+        .pipe(istanbul.hookRequire())
         .on('finish', function () {
             gulp.src(BACKEND_TEST_SCRIPTS)
                 .pipe(mocha())
