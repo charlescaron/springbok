@@ -19,6 +19,10 @@ module.exports = {
         currentResponse = res;
         Ticket.find({status: {'$ne':'closed'}}, processResponse);
     },
+    getAllClosed: function(req, res) {
+        currentResponse = res;
+        Ticket.find({status: 'closed'}, processResponse);
+    },
     getIdle: function(req, res) {
         currentResponse = res;
         Ticket.find({status: 'open'}, processResponse);

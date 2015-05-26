@@ -49,6 +49,11 @@ describe('Ticket service', function() {
         expect(fakeResource.query).to.have.been.called;
     });
 
+    it('should get all closed tickets', function(){
+        ticketService.getAllClosed();
+        expect(fakeResource.query).to.have.been.called;
+    });
+
     it('should get idle tickets', function(){
         ticketService.getIdle();
         expect(fakeResource.query).to.have.been.called;

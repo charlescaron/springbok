@@ -9,6 +9,8 @@ var processor = require('./ticket-repo');
 
 router.get('/active', processor.getAllActive);
 
+router.get('/closed', processor.getAllClosed);
+
 router.get('/idle', processor.getIdle);
 
 router.get('/onhold', processor.getOnHold);

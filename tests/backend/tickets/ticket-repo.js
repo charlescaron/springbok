@@ -41,6 +41,12 @@ describe('the ticket API', function(){
         expect(fakeResponse.json).to.have.been.called;
     });
 
+    it('should get all closed tickets', function(){
+        ticketRepo.getAllClosed({}, fakeResponse);
+        expect(Ticket.find).to.have.been.called;
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
     it('should get idle tickets', function(){
         ticketRepo.getIdle({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
