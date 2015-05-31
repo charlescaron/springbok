@@ -94,4 +94,19 @@ describe('Ticket service', function() {
         expect(response[0]).to.equal('An event');
     });
 
+    it('should search for available tickets', function(){
+
+        //Fixtures
+        httpBackend.when('GET', '/api/tickets/search?q=test').respond(200, ['A ticket']);
+        var response;
+        var callback = function(res) {
+            response = res.data;
+        };
+
+        //Test
+        ticketService.search('test').then(callback);
+        httpBackend.flush();
+        expect(response[0]).to.equal('A ticket');
+    });
+
 });

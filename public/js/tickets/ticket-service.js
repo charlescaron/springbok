@@ -31,6 +31,10 @@ springbok.factory('ticketService', function($resource, $http) {
             SINGLE_TICKET_RESOURCE.get(id, callback);
         },
 
+        search: function(text) {
+            return $http.get('/api/tickets/search?q=' + text);
+        },
+
         getAllActive: function(callback) {
             ACTIVE_TICKETS_RESOURCE.query(callback);
         },

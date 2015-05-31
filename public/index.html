@@ -6,12 +6,13 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/springbok.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
 
     <script src="js/springbok.js"></script>
 
@@ -22,6 +23,7 @@
     <script src="js/tickets/ticket-service.js"></script>
     <script src="js/tickets/ticket-filters.js"></script>
     <script src="js/tickets/ticket-form.js"></script>
+    <script src="js/tickets/search-controller.js"></script>
 
     <!-- Brands -->
     <script src="js/brands/brand-service.js"></script>
@@ -37,13 +39,29 @@
 </head>
 <body>
 
-    <nav class="navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
         <div class="container-fluid">
             <a class="navbar-brand" href="#/">Springbok</a>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/tickets/new">New Ticket</a></li>
-                <li><a href="#/environments">Environments</a></li>
-            </ul>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/tickets/new">New Ticket</a></li>
+                    <li><a href="#/environments">Environments</a></li>
+                </ul>
+
+                <form class="navbar-form" ng-controller="searchController">
+                    <div class="form-group" style="display:inline;">
+                        <div class="input-group" style="display:table;">
+                            <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+                            <input class="form-control" name="search" ng-model="selected" placeholder="Find a ticket by name..."
+                                   autocomplete="off" type="text" typeahead-wait-ms="100" typeahead-editable="false"
+                                   typeahead="ticket as ticket.title for ticket in search($viewValue)"
+                                   typeahead-on-select="select(selected._id)"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </nav>
 

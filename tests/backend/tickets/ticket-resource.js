@@ -1,6 +1,6 @@
 'use strict';
 
-var expect = require("chai").expect;
+var expect = require('chai').expect;
 var Ticket = require('../../../api/tickets/ticket-resource');
 
 describe('the structure of the Ticket model', function(){

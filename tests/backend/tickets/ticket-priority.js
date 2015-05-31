@@ -1,6 +1,6 @@
 'use strict';
 
-var expect = require("chai").expect;
+var expect = require('chai').expect;
 var Priorities = require('../../../api/tickets/ticket-priority');
 
 describe('the list of possible priorities for a ticket', function(){

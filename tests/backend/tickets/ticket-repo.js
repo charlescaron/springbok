@@ -30,7 +30,7 @@ describe('the ticket API', function(){
             callback(undefined, {});
         };
 
-        Ticket.findByIdAndUpdate = function(id, query, callback) {
+        Ticket.findOneAndUpdate = function(id, query, callback) {
             callback(undefined, {});
         };
     };

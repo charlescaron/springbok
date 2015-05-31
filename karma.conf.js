@@ -4,10 +4,11 @@ module.exports = function(config) {
         frameworks: ['mocha', 'sinon-chai'],
 
         files: [
-            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js">',
-            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js">',
-            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-resource.min.js">',
-            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-mocks.js',
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js">',
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js">',
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js">',
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-mocks.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js',
             'public/js/springbok.js',
             'public/js/**/*.js',
             'public/views/partials/*.html',
