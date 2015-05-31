@@ -4,6 +4,11 @@ body {
     padding-bottom: 70px;
 }
 
+/* Search bar */
+ul.dropdown-menu {
+    width: 97%;
+}
+
 /* Environment model colors */
 .environment-color {
     background-color: #718DA5;

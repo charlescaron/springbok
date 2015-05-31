@@ -1,7 +1,7 @@
 /*jshint -W079 */
 "use strict";
 
-var springbok = angular.module('springbok', ['ngRoute', 'ngResource']);
+var springbok = angular.module('springbok', ['ngRoute', 'ngResource', 'ui.bootstrap']);
 
 springbok.config(function($routeProvider) {
 

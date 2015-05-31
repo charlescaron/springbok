@@ -6,8 +6,11 @@ var ticketValidator = require('./ticket-validator');
 var globalValidator = require('../springbok-validator');
 var eventValidator = require('./event-validator');
 var processor = require('./ticket-repo');
+var searchTicketProcessor = require('./search-service');
 
 router.get('/active', processor.getAllActive);
+
+router.get('/closed', processor.getAllClosed);
 
 router.get('/idle', processor.getIdle);
 
@@ -19,7 +22,9 @@ router.get('/statuses', processor.getStatuses);
 
 router.get('/priorities', processor.getPriorities);
 
-router.get('/:id', globalValidator.checkUrlId,
+router.get('/search', searchTicketProcessor.search);
+
+router.get('/:id', ticketValidator.checkUrlId,
     globalValidator.checkValidationErrors,
     processor.getById);
 
@@ -27,13 +32,13 @@ router.post('/', ticketValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.create);
 
-router.post('/:id/event', globalValidator.checkUrlId,
+router.post('/:id/event', ticketValidator.checkUrlId,
     eventValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.addEvent);
 
-router.put('/:id',  globalValidator.checkUrlId,
-    globalValidator.checkBodyId,
+router.put('/:id',  ticketValidator.checkUrlId,
+    ticketValidator.checkBodyId,
     ticketValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.update);

@@ -21,7 +21,7 @@ The following software needs to be installed before using Springbok:
 
 - [Node.js](http://www.nodejs.org/). You need version 0.10.32 or newer.
 - The npm package manager. It may be included in your node.js distribution depending on the installation source.
-- [MongoDB](http://www.mongodb.org/). Tested on version 2.6.5.
+- [MongoDB](http://www.mongodb.org/). Tested on version 2.6.5 and on 3.0.3.
 
 **Environment variables**
 
@@ -39,6 +39,14 @@ You may define the following environment variables to customize your Springbok i
 
     npm install
 
-4. Start Springbok
+4.  If you wish, you can unit test the application by running:
+
+    npm test
+    
+    This can also be achieved directly by running gulp (which will also "lint" the JavaScript code using JSHint)
+    
+    gulp
+    
+5.  Start Springbok
 
     node bin\www

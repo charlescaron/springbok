@@ -34,7 +34,7 @@ describe('Edit ticket controller', function() {
         expect(ticketService.update).to.have.been.called;
     });
 
-    it('should show the selected ticket if a valid ID is provided', function(){
+    it('should show the selected ticket using the provided ID', function(){
         scope.$apply();
         expect(scope.ticket).to.equal('Single ticket');
     });

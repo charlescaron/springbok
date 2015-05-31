@@ -1,6 +1,6 @@
 'use strict';
 
-var BAD_ID = "The event ticket ID must be an alphanumeric string of 24 characters. Don't play with this.";
+var BAD_ID = "You tried to persist an object with a bad ID. Don't play with this.";
 
 var ID_LENGTH = 24;
 
@@ -18,7 +18,6 @@ module.exports = {
         var errors = req.validationErrors();
         if (errors) {
             res.status(400).json({errors: req.validationErrors()});
-            return;
         } else {
             next();
         }

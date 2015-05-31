@@ -30,13 +30,19 @@ describe('the ticket API', function(){
             callback(undefined, {});
         };
 
-        Ticket.findByIdAndUpdate = function(id, query, callback) {
+        Ticket.findOneAndUpdate = function(id, query, callback) {
             callback(undefined, {});
         };
     };
 
     it('should get all active tickets', function(){
         ticketRepo.getAllActive({}, fakeResponse);
+        expect(Ticket.find).to.have.been.called;
+        expect(fakeResponse.json).to.have.been.called;
+    });
+
+    it('should get all closed tickets', function(){
+        ticketRepo.getAllClosed({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
