@@ -2,7 +2,7 @@
 
 describe('Create new ticket controller', function() {
 
-    var scope, ticketService, environmentService, brandService, problemService, location, deferred;
+    var scope, ticketService, environmentService, clientService, problemService, location, deferred;
 
     beforeEach(module('springbok'));
 
@@ -14,7 +14,7 @@ describe('Create new ticket controller', function() {
             $scope: scope,
             ticketService: ticketService,
             environmentService: environmentService,
-            brandService: brandService,
+            clientService: clientService,
             problemService: problemService,
             $location: location
         });
@@ -23,23 +23,23 @@ describe('Create new ticket controller', function() {
     var createMocks = function() {
         location = {
             path: sinon.spy()
-        }
+        };
         ticketService = {
             save: function() {return deferred.promise;},
             getPriorities: function(callback) {callback('Priorities')}
-        },
+        };
         environmentService = {
             getAll: function() { return 'Environments list'; },
             save: function(param){return deferred.promise;}
-        },
-        brandService = {
-            getAll: function() { return 'Brands list'; },
+        };
+        clientService = {
+            getAll: function() { return 'Clients list'; },
             save: function(param){return deferred.promise;}
-        },
+        };
         problemService = {
             getAll: function() { return 'Problems list'; },
             save: function(param){return deferred.promise;}
-        }
+        };
 };
 
     it('should load the available priorities', function(){
@@ -58,15 +58,15 @@ describe('Create new ticket controller', function() {
         expect(scope.ticket.env).to.be.null;
     });
 
-    it('should select a brand', function(){
-        scope.selectBrand({_id: "1", name: "test"})
-        expect(scope.ticket.brand).to.deep.equal({_id: "1", name: "test"});
+    it('should select a client', function(){
+        scope.selectClient({_id: "1", name: "test"})
+        expect(scope.ticket.client).to.deep.equal({_id: "1", name: "test"});
     });
 
-    it('should unselect a brand', function(){
-        scope.selectBrand({_id: "1", name: "test"});
-        scope.selectBrand({_id: "1", name: "test"});
-        expect(scope.ticket.brand).to.be.null;
+    it('should unselect a client', function(){
+        scope.selectClient({_id: "1", name: "test"});
+        scope.selectClient({_id: "1", name: "test"});
+        expect(scope.ticket.client).to.be.null;
     });
 
     it('should select a problem', function(){
@@ -99,21 +99,21 @@ describe('Create new ticket controller', function() {
         expect(scope.problems).to.equal('Problems list');
     });
 
-    it('should create a new brand', function(){
-        scope.newBrand = "test";
-        scope.createBrand();
+    it('should create a new client', function(){
+        scope.newClient = "test";
+        scope.createClient();
         deferred.resolve();
         scope.$apply();
-        expect(scope.newBrand).to.be.null;
-        expect(scope.brands).to.equal('Brands list');
+        expect(scope.newClient).to.be.null;
+        expect(scope.clients).to.equal('Clients list');
     });
 
-    it('should name the ticket after the problem, brand and environment', function(){
+    it('should name the ticket after the problem, client and environment', function(){
         scope.ticket.problem = {name: "problem"};
         scope.ticket.env = {name: "environment"};
-        scope.ticket.brand = {name: "brand"};
+        scope.ticket.client = {name: "client"};
         scope.buildTicketName();
-        expect(scope.ticket.name).to.equal("problem in environment for brand");
+        expect(scope.ticket.name).to.equal("problem in environment for client");
     });
 
     it('should create a new ticket', function() {

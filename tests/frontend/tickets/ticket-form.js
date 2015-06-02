@@ -17,8 +17,8 @@ describe('Ticket form directive', function() {
         getPriorities: function(callback) {callback('List');}
     };
 
-    var brandService = {
-        getAll: function(callback) {callback('Brand list');}
+    var clientService = {
+        getAll: function(callback) {callback('Client list');}
     };
 
     beforeEach(function() {
@@ -26,7 +26,7 @@ describe('Ticket form directive', function() {
             $provide.value('environmentService', environmentService);
             $provide.value('problemService', problemService);
             $provide.value('ticketService', ticketService);
-            $provide.value('brandService', brandService);
+            $provide.value('clientService', clientService);
         });
 
         inject(function($compile, $rootScope) {
@@ -56,9 +56,9 @@ describe('Ticket form directive', function() {
         expect(ticketForm.isolateScope().problems).to.equal('Prob list');
     });
 
-    it('should load the list of brands', function(){
+    it('should load the list of clients', function(){
         ticketForm.isolateScope().$apply();
-        expect(ticketForm.isolateScope().brands).to.equal('Brand list');
+        expect(ticketForm.isolateScope().clients).to.equal('Client list');
     });
 
     it('should load the list of ticket status', function(){

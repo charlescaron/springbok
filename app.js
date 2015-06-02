@@ -18,7 +18,7 @@ autoIncrement.initialize(connection);
 var staticPath = require('./index');
 var ticketsApi = require('./api/tickets/ticket-routes');
 var environmentsApi = require('./api/environments/environment-routes');
-var brandsApi = require('./api/brands/brand-routes');
+var clientsApi = require('./api/clients/client-routes');
 var problemsApi = require('./api/problems/problem-routes');
 var logger = require("./logger");
 
@@ -35,7 +35,7 @@ app.use('/', staticPath);
 app.use(morgan('combined', { "stream": logger.stream }));
 app.use('/api/tickets', ticketsApi);
 app.use('/api/environments', environmentsApi);
-app.use('/api/brands', brandsApi);
+app.use('/api/clients', clientsApi);
 app.use('/api/problems', problemsApi);
 
 module.exports = app;

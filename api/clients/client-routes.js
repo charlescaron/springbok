@@ -2,22 +2,22 @@
 
 var express = require('express');
 var router = express.Router();
-var brandValidator = require('./brand-validator');
+var clientValidator = require('./client-validator');
 var globalValidator = require('../springbok-validator');
-var processor = require('./brand-repo');
+var processor = require('./client-repo');
 
 router.get('/all', processor.getAll);
 router.get('/:id', globalValidator.checkUrlId,
     globalValidator.checkValidationErrors,
     processor.getById);
 
-router.post('/',   brandValidator.checkCreationAttributes,
+router.post('/',   clientValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.create);
 
 router.put('/:id',  globalValidator.checkUrlId,
     globalValidator.checkBodyId,
-    brandValidator.checkCreationAttributes,
+    clientValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
     processor.update);
 
