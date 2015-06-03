@@ -16,6 +16,7 @@ describe('the structure of the Ticket model', function(){
         expect(Ticket.schema.paths).to.have.property('problem');
         expect(Ticket.schema.paths).to.have.property('client');
         expect(Ticket.schema.paths).to.have.property('events');
+        expect(Ticket.schema.paths).to.have.property('lastUpdatedOn');
     });
 
 });
