@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="col-md-12">
+        <h2>Existing clients</h2>
+    </div>
+    <div ng-repeat="client in clients">
+        <div class="col-md-2">
+            <a href="#/clients" ng-click="showClientDetails(client)" class="thumbnail"
+               ng-class="{'selected-color': client._id == selectedClient._id}">
+                <p><strong>{{client.name}}</strong></p>
+                <p>{{client.description}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="clients.length == 0"><span class="text-primary">Start by adding a client!</span></div>
+
+    <div class="col-md-12" ng-show="selectedClient">
+        <client-form callback="updateClient(selectedClient)" client="selectedClient"
+                          submit-icon="glyphicon-pencil" title="Edit the selected client" />
+    </div>
+
+    <div class="col-md-12"></div>
+    <div class="col-md-10 col-md-offset-1">
+        <hr/>
+    </div>
+
+    <div class="col-md-12">
+        <client-form callback="addClient(newClient)" client="newClient"
+                          submit-icon="glyphicon-plus" title="Add a new client" />
+    </div>
+
+</div>
+
+
+
+
+
