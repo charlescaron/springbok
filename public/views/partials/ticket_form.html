@@ -40,9 +40,9 @@
     </div>
     <div class="form-group">
         <div class="btn-group">
-            <label class="btn btn-default brand-color" ng-repeat="brand in brands">
-                <input type="radio" ng-model="ticket.brand" value="{{brand._id}}"/>
-                {{brand.name}}
+            <label class="btn btn-default client-color" ng-repeat="client in clients track by $index">
+                <input type="radio" ng-model="ticket.client" value="{{client._id}}"/>
+                {{client.name}}
             </label>
         </div>
     </div>

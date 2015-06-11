@@ -21,6 +21,9 @@ springbok.config(function($routeProvider) {
         .when('/environments', {
             templateUrl : 'views/environments.html',
             controller  : 'environmentController'
+        })
+        .when('/clients', {
+            templateUrl : 'views/clients.html',
+            controller  : 'clientController'
         });
-
 });

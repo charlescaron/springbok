@@ -12,7 +12,7 @@ var BAD_TITLE = "The ticket title must be an alphanumeric string between 1 and "
 var BAD_DESC = "The ticket description cannot have more than " + DESC_MAX_LENGTH + " characters";
 var BAD_ENV = "You must choose an environment from the predefined list";
 var BAD_PROBLEM = "You must choose a problem from the predefined list";
-var BAD_BRAND = "You must choose a brand from the predefined list";
+var BAD_CLIENT = "You must choose a client from the predefined list";
 var BAD_STATUS = "The ticket status must be one of " + Statuses.getLabels();
 var BAD_PRIORITY = "The ticket priority must be one of " + Priorities.getLabels();
 
@@ -33,7 +33,7 @@ module.exports = {
         req.checkBody('priority', BAD_PRIORITY).isIn(Priorities.getIds());
         req.checkBody('environment', BAD_ENV).len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
         req.checkBody('problem', BAD_PROBLEM).optional().len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
-        req.checkBody('brand', BAD_BRAND).optional().len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
+        req.checkBody('client', BAD_CLIENT).optional().len(ID_LENGTH, ID_LENGTH).isAlphanumeric();
         next();
     }
 };

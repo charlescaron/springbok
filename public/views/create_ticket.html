@@ -51,15 +51,15 @@
             </ul>
         </div>
         <div class="col-lg-2 column">
-            <h3>Brand</h3>
-            <form role="form" name="brandForm" novalidate>
+            <h3>Client</h3>
+            <form role="form" name="clientForm" novalidate>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': brandForm.name.$error.required && brandForm.name.$dirty}">
-                            <input name="name" class="form-control" type="text" placeholder="New brand" ng-model="newBrand" maxlength="30" required/>
+                        <div class="col-xs-10" style="padding-right:0px" ng-class="{'has-error': clientForm.name.$error.required && clientForm.name.$dirty}">
+                            <input name="name" class="form-control" type="text" placeholder="New client" ng-model="newClient" maxlength="30" required/>
                         </div>
                         <div class="col-xs-2" style="padding-left:0px">
-                            <button class="btn btn-default bt-xs" ng-click="createBrand(); brandForm.$setPristine()" ng-disabled="brandForm.$invalid">
+                            <button class="btn btn-default bt-xs" ng-click="createClient(); clientForm.$setPristine()" ng-disabled="clientForm.$invalid">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
@@ -67,11 +67,11 @@
                 </div>
             </form>
             <ul class="list-unstyled">
-                <li class="brand"
-                    ng-repeat="brand in brands track by $index"
-                    ng-class="{selected: ticket.brand.name == brand.name}"
-                    ng-click="selectBrand(brand)">
-                    <p >{{brand.name}}</p>
+                <li class="client"
+                    ng-repeat="client in clients track by $index"
+                    ng-class="{selected: ticket.client.name == client.name}"
+                    ng-click="selectClient(client)">
+                    <p >{{client.name}}</p>
                 </li>
             </ul>
         </div>

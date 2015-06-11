@@ -3,8 +3,8 @@
 var NAME_MAX_LENGTH = 30;
 var DESC_MAX_LENGTH = 200;
 
-var BAD_NAME = "The brand name must be an alphanumeric string between 1 and " + NAME_MAX_LENGTH + " characters";
-var BAD_DESC = "The brand description cannot have more than " + DESC_MAX_LENGTH + " characters";
+var BAD_NAME = "The client name must be an alphanumeric string between 1 and " + NAME_MAX_LENGTH + " characters";
+var BAD_DESC = "The client description cannot have more than " + DESC_MAX_LENGTH + " characters";
 
 module.exports = {
     checkCreationAttributes: function(req, res, next) {

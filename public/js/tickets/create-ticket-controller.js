@@ -1,11 +1,11 @@
 'use strict';
 
-springbok.controller('createTicketController', function($scope, $location, ticketService, environmentService, problemService, brandService) {
+springbok.controller('createTicketController', function($scope, $location, ticketService, environmentService, problemService, clientService) {
 
     $scope.ticket = {};
     $scope.environments = environmentService.getAll();
     $scope.problems = problemService.getAll();
-    $scope.brands = brandService.getAll();
+    $scope.clients = clientService.getAll();
     ticketService.getPriorities(function(response) {
         $scope.priorities = response;
     });
@@ -18,7 +18,7 @@ springbok.controller('createTicketController', function($scope, $location, ticke
         $scope.ticket.name =
             ($scope.ticket.problem ? $scope.ticket.problem.name : " ") +
             ($scope.ticket.env ? " in " + $scope.ticket.env.name : " ") +
-            ($scope.ticket.brand ? " for " + $scope.ticket.brand.name : " ");
+            ($scope.ticket.client ? " for " + $scope.ticket.client.name : " ");
     };
 
     $scope.selectEnvironment = function(env) {
@@ -29,11 +29,11 @@ springbok.controller('createTicketController', function($scope, $location, ticke
         }
     };
 
-    $scope.selectBrand = function(brand){
-        if($scope.ticket.brand && $scope.ticket.brand._id == brand._id){
-            $scope.ticket.brand = null;
+    $scope.selectClient = function(client){
+        if($scope.ticket.client && $scope.ticket.client._id == client._id){
+            $scope.ticket.client = null;
         }else {
-            $scope.ticket.brand = brand;
+            $scope.ticket.client = client;
         }
     };
 
@@ -52,8 +52,8 @@ springbok.controller('createTicketController', function($scope, $location, ticke
             description: $scope.ticket.description,
             priority: $scope.ticket.priority
         };
-        if ($scope.ticket.brand) {
-            ticket.brand = $scope.ticket.brand._id;
+        if ($scope.ticket.client) {
+            ticket.client = $scope.ticket.client._id;
         }
         if ($scope.ticket.env) {
             ticket.environment = $scope.ticket.env._id;
@@ -73,7 +73,7 @@ springbok.controller('createTicketController', function($scope, $location, ticke
     };
 
     /**
-     * Creation of additional dependencies (environments, brands, problems)
+     * Creation of additional dependencies (environments, clients, problems)
      */
     $scope.createEnvironment = function(){
         environmentService.save({
@@ -94,12 +94,12 @@ springbok.controller('createTicketController', function($scope, $location, ticke
     };
 
 
-    $scope.createBrand = function(){
-        brandService.save({
-            name: $scope.newBrand
+    $scope.createClient = function(){
+        clientService.save({
+            name: $scope.newClient
         }).then(function(){
-            $scope.newBrand = null;
-            $scope.brands = brandService.getAll();
+            $scope.newClient = null;
+            $scope.clients = clientService.getAll();
         });
     };
 });

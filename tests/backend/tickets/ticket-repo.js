@@ -16,6 +16,7 @@ describe('the ticket API', function(){
     beforeEach(function(done) {
         createMocks();
         sinon.spy(Ticket, 'find');
+        sinon.spy(Ticket, 'sort');
         sinon.spy(Ticket, 'findById');
         done();
     });
@@ -26,7 +27,15 @@ describe('the ticket API', function(){
             json: sinon.spy()
         };
 
-        Ticket.find = function(query, callback) {
+        Ticket.find = function() {
+            return this;
+        };
+
+        Ticket.sort = function() {
+            return this;
+        };
+
+        Ticket.exec = function(callback) {
             callback(undefined, {});
         };
 
@@ -35,33 +44,38 @@ describe('the ticket API', function(){
         };
     };
 
-    it('should get all active tickets', function(){
+    it('should get all active tickets sorted by date', function(){
         ticketRepo.getAllActive({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
+        expect(Ticket.sort).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
-    it('should get all closed tickets', function(){
+    it('should get all closed tickets sorted by date', function(){
         ticketRepo.getAllClosed({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
+        expect(Ticket.sort).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
-    it('should get idle tickets', function(){
+    it('should get idle tickets sorted by date', function(){
         ticketRepo.getIdle({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
+        expect(Ticket.sort).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
-    it('should get on hold tickets', function(){
+    it('should get on hold tickets sorted by date', function(){
         ticketRepo.getOnHold({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
+        expect(Ticket.sort).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
-    it('should get in progress tickets', function(){
+    it('should get in progress tickets sorted by date', function(){
         ticketRepo.getInProgress({}, fakeResponse);
         expect(Ticket.find).to.have.been.called;
+        expect(Ticket.sort).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
     });
 
@@ -69,11 +83,6 @@ describe('the ticket API', function(){
         ticketRepo.getById({params: {id: 1234}}, fakeResponse);
         expect(Ticket.findById).to.have.been.called;
         expect(fakeResponse.json).to.have.been.called;
-    });
-
-    it('should create a new ticket', function(){
-        ticketRepo.create({body: {title: 'Test', status: 'active', environment: 1234}}, fakeResponse);
-        //expect(fakeResponse.json).to.have.been.called;
     });
 
     it('should update an existing ticket', function(){
@@ -98,6 +107,7 @@ describe('the ticket API', function(){
 
     afterEach(function() {
         Ticket.find.restore();
+        Ticket.sort.restore();
         Ticket.findById.restore();
     });
 

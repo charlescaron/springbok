@@ -18,7 +18,7 @@ ul.dropdown-menu {
     background-color: #80AC88;
 }
 
-.brand-color {
+.client-color {
     background-color: #FF841E;
 }
 
@@ -37,5 +37,5 @@ ul.dropdown-menu {
     .column .environment.selected {background-color: #496C89; color: white;}
     .column .problem {background-color: #80AC88;}
     .column .problem.selected {background-color: #578C60; color: white;}
-    .column .brand {background-color: #FF841E;}
-    .column .brand.selected {background-color: #E16600; color: white;}
+    .column .client {background-color: #FF841E;}
+    .column .client.selected {background-color: #E16600; color: white;}
