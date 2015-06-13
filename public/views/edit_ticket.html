@@ -24,7 +24,7 @@
         <div ng-repeat="event in (ticket.events | orderBy: 'date':true)">
             <p>On {{ event.date | date: 'yyyy-MM-dd HH:mm:ss Z'}},</p>
             <blockquote>
-                <p>{{event.text}}</p>
+                <p class="parse-line-breaks">{{event.text}}</p>
             </blockquote>
         </div>
         <div ng-show="ticket.events.length == 0"><span class="text-primary">There are no events for this ticket!</span></div>
