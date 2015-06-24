@@ -14,7 +14,7 @@ var processResponse = function(err, response) {
     }
 };
 
-var findByStatus = function(query) {
+var find = function(query) {
     Ticket.find(query).
         sort({lastUpdatedOn: 'desc'}).
         exec(processResponse);
@@ -23,23 +23,23 @@ var findByStatus = function(query) {
 module.exports = {
     getAllActive: function(req, res) {
         currentResponse = res;
-        findByStatus({status: {'$ne':'closed'}});
+        find({status: {'$ne':'closed'}});
     },
     getAllClosed: function(req, res) {
         currentResponse = res;
-        findByStatus({status: 'closed'});
+        find({status: 'closed'});
     },
     getIdle: function(req, res) {
         currentResponse = res;
-        findByStatus({status: 'open'});
+        find({status: 'open'});
     },
     getOnHold: function(req, res) {
         currentResponse = res;
-        findByStatus({$or : [{status: 'blocked_third_party'}, {status: 'bugfix'}]});
+        find({$or : [{status: 'blocked_third_party'}, {status: 'bugfix'}]});
     },
     getInProgress: function(req, res) {
         currentResponse = res;
-        findByStatus({status: 'in_progress'});
+        find({status: 'in_progress'});
     },
     getStatuses: function(req, res) {
         res.json(Statuses.getAll());
@@ -56,7 +56,8 @@ module.exports = {
         var rawTicket = req.body;
         var converted = new Ticket({title: rawTicket.title, status: rawTicket.status, priority: rawTicket.priority,
             description: rawTicket.description, environment: rawTicket.environment, problem: rawTicket.problem,
-            client: rawTicket.client, lastUpdatedOn: new Date(), events: [{date: new Date(), text: 'Ticket created'}]});
+            client: rawTicket.client, lastUpdatedOn: new Date(), createdOn: new Date(),
+            events: [{date: new Date(), text: 'Ticket created'}]});
         converted.save(processResponse);
     },
     update: function(req, res) {

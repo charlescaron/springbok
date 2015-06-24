@@ -109,4 +109,49 @@ describe('Ticket service', function() {
         expect(response[0]).to.equal('A ticket');
     });
 
+    it('should get all tickets opened for a specified month', function(){
+
+        //Fixtures
+        httpBackend.when('GET', '/api/tickets/openedbymonth?year=2015&month=5').respond(200, ['A ticket']);
+        var response;
+        var callback = function(res) {
+            response = res.data;
+        };
+
+        //Test
+        ticketService.getOpenedByMonth(2015, 5).then(callback);
+        httpBackend.flush();
+        expect(response[0]).to.equal('A ticket');
+    });
+
+    it('should aggregate by client all tickets opened in a month', function(){
+
+        //Fixtures
+        httpBackend.when('GET', '/api/tickets/clientaggregate?year=2015&month=5').respond(200, ['A ticket']);
+        var response;
+        var callback = function(res) {
+            response = res.data;
+        };
+
+        //Test
+        ticketService.getClientAggregateByMonth(2015, 5).then(callback);
+        httpBackend.flush();
+        expect(response[0]).to.equal('A ticket');
+    });
+
+    it('should aggregate by environment all tickets opened in a month', function(){
+
+        //Fixtures
+        httpBackend.when('GET', '/api/tickets/environmentaggregate?year=2015&month=5').respond(200, ['A ticket']);
+        var response;
+        var callback = function(res) {
+            response = res.data;
+        };
+
+        //Test
+        ticketService.getEnvironmentAggregateByMonth(2015, 5).then(callback);
+        httpBackend.flush();
+        expect(response[0]).to.equal('A ticket');
+    });
+
 });

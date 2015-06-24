@@ -5,42 +5,49 @@ var router = express.Router();
 var ticketValidator = require('./ticket-validator');
 var globalValidator = require('../springbok-validator');
 var eventValidator = require('./event-validator');
-var processor = require('./ticket-repo');
-var searchTicketProcessor = require('./search-service');
+var ticketProcessor = require('./ticket-repo');
+var ticketReportingProcessor = require('./reporting-repo');
+var ticketSearchProcessor = require('./search-service');
 
-router.get('/active', processor.getAllActive);
+router.get('/active', ticketProcessor.getAllActive);
 
-router.get('/closed', processor.getAllClosed);
+router.get('/closed', ticketProcessor.getAllClosed);
 
-router.get('/idle', processor.getIdle);
+router.get('/idle', ticketProcessor.getIdle);
 
-router.get('/onhold', processor.getOnHold);
+router.get('/onhold', ticketProcessor.getOnHold);
 
-router.get('/inprogress', processor.getInProgress);
+router.get('/inprogress', ticketProcessor.getInProgress);
 
-router.get('/statuses', processor.getStatuses);
+router.get('/statuses', ticketProcessor.getStatuses);
 
-router.get('/priorities', processor.getPriorities);
+router.get('/priorities', ticketProcessor.getPriorities);
 
-router.get('/search', searchTicketProcessor.search);
+router.get('/search', ticketSearchProcessor.search);
+
+router.get('/openedbymonth', ticketReportingProcessor.getOpenedByMonth);
+
+router.get('/clientaggregate', ticketReportingProcessor.getClientAggregate);
+
+router.get('/environmentaggregate', ticketReportingProcessor.getEnvironmentAggregate);
 
 router.get('/:id', ticketValidator.checkUrlId,
     globalValidator.checkValidationErrors,
-    processor.getById);
+    ticketProcessor.getById);
 
 router.post('/', ticketValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
-    processor.create);
+    ticketProcessor.create);
 
 router.post('/:id/event', ticketValidator.checkUrlId,
     eventValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
-    processor.addEvent);
+    ticketProcessor.addEvent);
 
 router.put('/:id',  ticketValidator.checkUrlId,
     ticketValidator.checkBodyId,
     ticketValidator.checkCreationAttributes,
     globalValidator.checkValidationErrors,
-    processor.update);
+    ticketProcessor.update);
 
 module.exports = router;
