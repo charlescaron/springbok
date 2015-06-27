@@ -1,6 +1,11 @@
 springbok change history
 =========
 
+**0.4**
+
+- Now supporting line breaks when displaying an event's text
+- Basic ticket creation reporting per month 
+
 **0.3**
 
 - Replaced the concept of 'brand' by the concept of 'client'
