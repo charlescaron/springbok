@@ -1,6 +1,18 @@
 springbok change history
 =========
 
+**0.4**
+
+- Now supporting line breaks when displaying an event's text
+- Basic ticket creation reporting per month 
+
+**0.3**
+
+- Replaced the concept of 'brand' by the concept of 'client'
+- Now sorting tickets by last update time desc
+- Added a page to manage clients
+- Added the current version in the header
+
 **0.2**
 
 - Added a filter to show closed tickets

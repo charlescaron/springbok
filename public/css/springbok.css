@@ -26,7 +26,7 @@ ul.dropdown-menu {
     background-color: #DEDEDE;
 }
 
-/* Create ticket page style  */
+/* Create ticket page style */
 .alt { height: 100% }
     .alt.row { margin: 0; }
 .column { height: 100%; border-right: solid 1px black; padding-left: 15px; }
@@ -39,3 +39,10 @@ ul.dropdown-menu {
     .column .problem.selected {background-color: #578C60; color: white;}
     .column .client {background-color: #FF841E;}
     .column .client.selected {background-color: #E16600; color: white;}
+
+/* Edit ticket page style */
+.parse-line-breaks {
+    white-space: pre-wrap;
+}
+
+

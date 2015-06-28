@@ -9,6 +9,8 @@ module.exports = function(config) {
             'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js">',
             'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-mocks.js',
             'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js',
+            'public/components/d3-3.5.5.min.js',
+            'public/components/pie-chart-1.0.0.min.js',
             'public/js/springbok.js',
             'public/js/**/*.js',
             'public/views/partials/*.html',

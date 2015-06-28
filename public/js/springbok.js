@@ -1,7 +1,7 @@
 /*jshint -W079 */
 "use strict";
 
-var springbok = angular.module('springbok', ['ngRoute', 'ngResource', 'ui.bootstrap']);
+var springbok = angular.module('springbok', ['ngRoute', 'ngResource', 'ui.bootstrap', 'n3-pie-chart']);
 
 springbok.config(function($routeProvider) {
 
@@ -25,5 +25,9 @@ springbok.config(function($routeProvider) {
         .when('/clients', {
             templateUrl : 'views/clients.html',
             controller  : 'clientController'
+        })
+        .when('/reports', {
+            templateUrl : 'views/reports.html',
+            controller  : 'reportController'
         });
 });

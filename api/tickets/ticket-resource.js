@@ -8,6 +8,7 @@ var ticketSchema = new mongoose.Schema({
     status: String,
     priority: String,
     description: { type: String, default: '' },
+    createdOn: Date,
     lastUpdatedOn: Date,
     environment: { type: mongoose.Schema.Types.ObjectId, ref: 'Environment' },
     problem: { type: mongoose.Schema.Types.ObjectId, ref: 'Problem' },

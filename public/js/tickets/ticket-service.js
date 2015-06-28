@@ -39,6 +39,18 @@ springbok.factory('ticketService', function($resource, $http) {
             ACTIVE_TICKETS_RESOURCE.query(callback);
         },
 
+        getOpenedByMonth: function(year, month) {
+            return $http.get('/api/tickets/openedbymonth?year=' + year + '&month=' + month);
+        },
+
+        getClientAggregateByMonth: function(year, month) {
+            return $http.get('/api/tickets/clientaggregate?year=' + year + '&month=' + month);
+        },
+
+        getEnvironmentAggregateByMonth: function(year, month) {
+            return $http.get('/api/tickets/environmentaggregate?year=' + year + '&month=' + month);
+        },
+
         getAllClosed: function(callback) {
             CLOSED_TICKETS_RESOURCE.query(callback);
         },
